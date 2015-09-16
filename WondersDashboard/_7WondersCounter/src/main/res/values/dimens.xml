@@ -1,0 +1,46 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- Dialogs -->
+    <dimen name="dialog_standard_margin">5dp</dimen>
+    <!-- Divider -->
+    <dimen name="divider_height">5dp</dimen>
+    <dimen name="divider_margin">2dp</dimen>
+    <!-- TextView -->
+    <dimen name="textView_margin">8dp</dimen>
+    <dimen name="textView_margin_big">12dp</dimen>
+    <dimen name="textView_padding">3dp</dimen>
+    <dimen name="textView_padding_header">5dp</dimen>
+    <dimen name="textView_padding_normal">10dp</dimen>
+
+    <dimen name="textView_header_width_name">90dp</dimen>
+    <dimen name="textView_header_width_small">50dp</dimen>
+    <dimen name="textView_header_width_normal">60dp</dimen>
+    <dimen name="textView_header_width_big">80dp</dimen>
+    <dimen name="textView_item_margin_big">20dp</dimen>
+    <!-- ItemList -->
+    <dimen name="item_padding">4dp</dimen>
+    <dimen name="row_padding">5dp</dimen>
+    <dimen name="row_margin">5dp</dimen>
+    <dimen name= "item_textView_padding_left">15dp</dimen>
+    <dimen name="item_textView_padding_left_big">25dp</dimen>
+    <!-- EditText -->
+    <dimen name="editText_margin">8dp</dimen>
+    <dimen name="editText_points_width">50dp</dimen>
+    <!-- custom value/drawble -->
+    <dimen name="standard_margin">15dp</dimen>
+    <dimen name="stroke_width_big">3dp</dimen>
+    <dimen name="radius_big">5dp</dimen>
+    <!-- button -->
+    <dimen name="button_margin">10dp</dimen>
+    <dimen name="button_radious">5dp</dimen>
+    <dimen name="button_padding">8dp</dimen>
+    <dimen name="button_stroke_width">1dp</dimen>
+    <dimen name="button_radius">6dp</dimen>
+    <dimen name="button_margin_big">15dp</dimen>
+    <!--elevation -->
+    <dimen name="elevation_standard">5dp</dimen>
+</resources>

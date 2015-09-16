@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">7WondersCounter</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Dialogs -->
+    <string name="science_dialog_name">Science Calculation</string>
+    <string name="science_calculation">Points from science: %1$d</string>
+    <string name="science_button_calculate">Calculate</string>
+    <string name="science_button_close">Close</string>
+    <string name="science_text_message">Enter the numbers of card</string>
+    <!-- Settings -->
+    <string name="settings_addPlayerText">Add new player</string>
+    <string name="settings_newPlayerHint"> Player name</string>
+    <string name="settings_addPlayerButton">Add</string>
+    <string name="settings_startGameButton">Start Game</string>
+    <string name="settings_playerListText">List of players:</string>
+    <!-- Warning/Errors -->
+    <string name="warning_not_yet_implemented">This option is not yet implemented</string>
+    <string name="warning_name_added">Name was previously added</string>
+    <string name="warning_player_name_not_empty">Provide player name</string>
+    <string name="warning_add_players">Please add more players</string>
+    <!-- Headers -->
+    <string name="list_header_player_name">Player name</string>
+    <string name="list_header_war_points">War</string>
+    <string name="list_header_gold_points">Gold</string>
+    <string name="list_header_wonder_points">Wonder</string>
+    <string name="list_header_civil_points">Civil</string>
+    <string name="list_header_trade_points">Commerce</string>
+    <string name="list_header_guild_points">Guild</string>
+    <string name="list_header_science_points">Science</string>
+    <string name="list_header_black_points">Black</string>
+    <string name="list_header_total_points">Total</string>
+    <!-- Extensions -->
+    <string name="settings_game_extensions">Use extension dashboard</string>
+
+    <!--Dashboard -->
+    <string name="dashboard_player_name">Player</string>
+    <string name="dashboard_player_points">Points</string>
+    <!--DashBoard menu -->
+    <string name="menu_dashboard">Score List</string>
+    <string name="menu_edit">Edit Player Score</string>
+</resources>

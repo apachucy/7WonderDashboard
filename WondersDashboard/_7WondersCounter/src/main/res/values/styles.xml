@@ -1,0 +1,70 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+    <style name="AppBaseTheme" parent="Theme.AppCompat.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+        <!-- colorPrimary is used for the default action bar background -->
+        <item name="colorPrimary">@color/primary</item>
+
+        <!-- colorPrimaryDark is used for the status bar -->
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+
+        <!-- colorAccent is used as the default value for colorControlActivated,
+             which is used to tint widgets -->
+        <item name="colorAccent">@color/accent</item>
+        <item name="windowActionBar">false</item>
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+
+    <style name="background">
+        <item name="android:background">@color/accent</item>
+    </style>
+
+    <style name="background.dialog"></style>
+
+    <style name="textView" parent="@android:style/Widget.TextView">
+
+
+    </style>
+
+    <style name="textView.header"></style>
+
+    <style name="textView.warning">
+        <item name="android:textColor">@color/red</item>
+    </style>
+
+    <style name="textView.item"></style>
+
+    <!-- Edit Text -->
+    <style name="editText" parent="@android:style/Widget.EditText">
+
+        <item name="android:textColorHint">@color/grey_dark</item>
+    </style>
+
+    <style name="editText.dialog"></style>
+
+    <style name="editText.item"></style>
+
+    <style name="button" parent="@android:style/Widget.Button">
+        <item name="android:background">@drawable/button_background_blue</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="button.dialog"></style>
+
+    <style name="toolbar">
+        <item name="android:background">@color/primary</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+</resources>

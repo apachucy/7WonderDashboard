@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/background.dialog"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/dialog_titleTextView"
+        style="@style/textView.header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/science_dialog_name"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <View
+        android:id="@+id/dialog_divider"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/divider_height"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/dialog_titleTextView"
+        android:layout_marginBottom="@dimen/dialog_standard_margin"
+        android:layout_marginLeft="@dimen/divider_margin"
+        android:layout_marginRight="@dimen/divider_margin"
+        android:layout_marginTop="@dimen/dialog_standard_margin"
+        android:background="@color/black" />
+
+    <RelativeLayout
+        android:id="@+id/dialog_body_container"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/dialog_divider"
+        android:gravity="center"
+        android:paddingBottom="@dimen/dialog_standard_margin">
+
+        <TextView
+            android:id="@+id/dialog_messageTextView"
+            style="@style/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:padding="@dimen/textView_padding"
+            android:text="@string/science_text_message" />
+
+        <ImageView
+            android:id="@+id/dialog_ic_plate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/dialog_messageTextView"
+            android:src="@drawable/ic_plate" />
+
+        <ImageView
+            android:id="@+id/dialog_ic_caliper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/dialog_ic_plate"
+            android:src="@drawable/ic_caliper" />
+
+        <ImageView
+            android:id="@+id/dialog_ic_circle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/dialog_ic_caliper"
+            android:src="@drawable/ic_circle" />
+
+        <ImageView
+            android:id="@+id/dialog_ic_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/dialog_ic_circle"
+            android:src="@drawable/ic_all" />
+
+        <EditText
+            android:id="@+id/dialog_platesEditText"
+            style="@style/editText.dialog"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/dialog_ic_plate"
+            android:layout_below="@id/dialog_messageTextView"
+            android:layout_toRightOf="@id/dialog_ic_plate"
+            android:ems="10"
+            android:inputType="number"
+            android:maxLength="1">
+
+            <requestFocus />
+        </EditText>
+
+        <EditText
+            android:id="@+id/dialog_caliperEditText"
+            style="@style/editText.dialog"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/dialog_ic_caliper"
+            android:layout_below="@id/dialog_platesEditText"
+            android:layout_toRightOf="@id/dialog_ic_caliper"
+            android:ems="10"
+            android:inputType="number"
+            android:maxLength="1" />
+
+        <EditText
+            android:id="@+id/dialog_circleEditText"
+            style="@style/editText.dialog"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/dialog_ic_circle"
+            android:layout_below="@id/dialog_caliperEditText"
+            android:layout_toRightOf="@id/dialog_ic_circle"
+            android:ems="10"
+            android:inputType="number"
+            android:maxLength="1" />
+
+        <EditText
+            android:id="@+id/dialog_allEditText"
+            style="@style/editText.dialog"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/dialog_ic_all"
+            android:layout_below="@id/dialog_circleEditText"
+            android:layout_toRightOf="@id/dialog_ic_all"
+            android:ems="10"
+            android:inputType="number"
+            android:maxLength="1" />
+
+        <TextView
+            android:id="@+id/dialog_calculateScienceTextView"
+            style="@style/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/dialog_ic_all" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/dialog_calculateScienceTextView"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/dialog_calculateButton"
+                style="@style/button.dialog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/science_button_calculate" />
+
+            <Button
+                android:id="@+id/dialog_closeButton"
+                style="@style/button.dialog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/dialog_calculateButton"
+                android:text="@string/science_button_close" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

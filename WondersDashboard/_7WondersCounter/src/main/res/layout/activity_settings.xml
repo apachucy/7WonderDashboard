@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+
+    <view
+        android:id="@+id/toolbar"
+        class="android.support.v7.widget.Toolbar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        style="@style/toolbar"
+        android:layout_alignParentTop="true" />
+
+    <Switch
+        android:id="@+id/settings_extensionGameSwitch"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/settings_startGameButton"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/toolbar"
+        android:layout_marginBottom="@dimen/textView_padding_normal"
+        android:padding="@dimen/textView_padding_normal"
+        android:text="@string/settings_game_extensions"
+        android:checked="false" />
+</RelativeLayout>

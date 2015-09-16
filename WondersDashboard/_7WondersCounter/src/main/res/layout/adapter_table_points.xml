@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/table_points_playerNameTextView"
+        style="@style/textView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.5"
+        android:gravity="center"
+        android:paddingBottom="@dimen/textView_margin"
+        android:paddingTop="@dimen/textView_margin"
+        android:text="New Text" />
+
+    <TextView
+        android:id="@+id/table_points_playerPointsTextView"
+        style="@style/textView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.5"
+        android:gravity="center"
+        android:paddingBottom="@dimen/textView_margin"
+        android:paddingTop="@dimen/textView_margin"
+        android:text="New Text" />
+</LinearLayout>

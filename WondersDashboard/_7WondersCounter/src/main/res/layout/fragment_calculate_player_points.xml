@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Spinner
+        android:id="@+id/calculate_playerNameSpinner"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/textView_margin"
+        android:elevation="@dimen/elevation_standard" />
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/calculate_playerNameSpinner">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <ImageView
+                android:id="@+id/calculate_player_points_war"
+                android:layout_width="@dimen/textView_header_width_small"
+                android:layout_height="wrap_content"
+                android:background="@color/red"
+                android:paddingBottom="@dimen/textView_padding_normal"
+                android:paddingLeft="@dimen/textView_padding_header"
+                android:paddingTop="@dimen/textView_padding_normal"
+                android:src="@drawable/ic_war" />
+
+            <ImageView
+                android:id="@+id/calculate_player_points_gold"
+                android:layout_width="@dimen/textView_header_width_small"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/calculate_player_points_war"
+                android:background="@color/gold_dark"
+                android:paddingBottom="@dimen/textView_padding_normal"
+                android:paddingLeft="@dimen/textView_padding_header"
+                android:paddingTop="@dimen/textView_padding_normal"
+                android:src="@drawable/ic_gold" />
+
+            <ImageView
+                android:id="@+id/calculate_player_points_wonder"
+                android:layout_width="@dimen/textView_header_width_small"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/calculate_player_points_gold"
+                android:background="@color/grey_dark"
+                android:paddingBottom="@dimen/textView_padding_normal"
+                android:paddingLeft="@dimen/textView_padding_header"
+                android:paddingTop="@dimen/textView_padding_normal"
+                android:src="@drawable/ic_wonder" />
+
+            <ImageView
+                android:id="@+id/calculate_player_points_civic"
+                android:layout_width="@dimen/textView_header_width_small"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/calculate_player_points_wonder"
+                android:background="@color/blue_nypd"
+                android:paddingBottom="@dimen/textView_padding_normal"
+                android:paddingLeft="@dimen/textView_padding_header"
+                android:paddingTop="@dimen/textView_padding_normal"
+                android:src="@drawable/ic_civic" />
+
+            <ImageView
+                android:id="@+id/calculate_player_points_trade"
+                android:layout_width="@dimen/textView_header_width_small"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/calculate_player_points_civic"
+                android:background="@color/gold_clear"
+                android:paddingBottom="@dimen/textView_padding_normal"
+                android:paddingLeft="@dimen/textView_padding_header"
+                android:paddingTop="@dimen/textView_padding_normal"
+                android:src="@drawable/ic_trade" />
+
+            <TextView
+                android:id="@+id/calculate_player_points_guild"
+                style="@style/textView.item"
+                android:layout_width="@dimen/textView_header_width_small"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/calculate_player_points_trade"
+                android:background="@color/cyclamen"
+                android:gravity="center"
+                android:paddingBottom="@dimen/textView_padding_normal"
+                android:paddingLeft="@dimen/textView_padding_header"
+                android:paddingTop="@dimen/textView_padding_normal"
+                android:text="@string/list_header_guild_points"
+                android:textStyle="bold" />
+
+
+            <ImageView
+                android:id="@+id/calculate_player_points_science"
+                android:layout_width="@dimen/textView_header_width_small"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/calculate_player_points_guild"
+                android:background="@color/green_dark"
+                android:paddingBottom="@dimen/textView_padding_normal"
+                android:paddingLeft="@dimen/textView_padding_header"
+                android:paddingTop="@dimen/textView_padding_normal"
+                android:src="@drawable/ic_science" />
+
+            <TextView
+                android:id="@+id/calculate_player_points_total"
+                style="@style/textView.item"
+                android:layout_width="@dimen/textView_header_width_small"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/calculate_player_points_science"
+                android:gravity="center"
+                android:paddingBottom="@dimen/textView_padding_normal"
+                android:paddingLeft="@dimen/textView_padding_header"
+                android:paddingTop="@dimen/textView_padding_normal"
+                android:text="@string/list_header_total_points"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/calculate_player_points_warEditText"
+                style="@style/editText"
+                android:layout_width="@dimen/editText_points_width"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/calculate_player_points_gold"
+                android:layout_alignBottom="@id/calculate_player_points_war"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@id/calculate_player_points_war"
+                android:ems="10"
+                android:gravity="right"
+                android:inputType="numberDecimal"
+                android:maxLength="3" />
+
+            <EditText
+                android:id="@+id/calculate_player_points_goldEditText"
+                style="@style/editText"
+                android:layout_width="@dimen/editText_points_width"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/calculate_player_points_gold"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@id/calculate_player_points_gold"
+                android:layout_below="@id/calculate_player_points_warEditText"
+                android:ems="10"
+                android:gravity="right"
+                android:inputType="numberDecimal"
+                android:maxLength="3" />
+
+            <EditText
+                android:id="@+id/calculate_player_points_wonderEditText"
+                style="@style/editText"
+                android:layout_width="@dimen/editText_points_width"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/calculate_player_points_wonder"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@id/calculate_player_points_wonder"
+                android:layout_below="@+id/calculate_player_points_goldEditText"
+                android:ems="10"
+                android:gravity="right"
+                android:inputType="numberDecimal"
+                android:maxLength="3" />
+
+            <EditText
+                android:id="@+id/calculate_player_points_civicEditText"
+                style="@style/editText"
+                android:layout_width="@dimen/editText_points_width"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/calculate_player_points_civic"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@id/calculate_player_points_civic"
+                android:layout_below="@id/calculate_player_points_wonderEditText"
+                android:ems="10"
+                android:gravity="right"
+                android:inputType="numberDecimal"
+                android:maxLength="3" />
+
+            <EditText
+                android:id="@+id/calculate_player_points_tradeEditText"
+                style="@style/editText"
+                android:layout_width="@dimen/editText_points_width"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/calculate_player_points_trade"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@id/calculate_player_points_trade"
+                android:layout_below="@id/calculate_player_points_civicEditText"
+                android:ems="10"
+                android:gravity="right"
+                android:inputType="numberDecimal"
+                android:maxLength="3" />
+
+            <EditText
+                android:id="@+id/calculate_player_points_guildEditText"
+                style="@style/editText"
+                android:layout_width="@dimen/editText_points_width"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/calculate_player_points_guild"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@id/calculate_player_points_guild"
+                android:layout_below="@id/calculate_player_points_tradeEditText"
+                android:ems="10"
+                android:gravity="right"
+                android:inputType="numberDecimal"
+                android:maxLength="3" />
+
+            <TextView
+                android:id="@+id/calculate_player_points_scienceTextView"
+                style="@style/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/calculate_player_points_science"
+                android:layout_alignLeft="@id/calculate_player_points_guildEditText"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignStart="@id/calculate_player_points_guildEditText"
+                android:layout_alignTop="@id/calculate_player_points_science"
+                android:layout_below="@+id/calculate_player_points_guildEditText"
+                android:gravity="end"
+                android:text="New Text" />
+
+            <TextView
+                android:id="@+id/calculate_player_points_totalTextView"
+                style="@style/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/calculate_player_points_total"
+                android:layout_alignLeft="@id/calculate_player_points_scienceTextView"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignStart="@id/calculate_player_points_scienceTextView"
+                android:layout_alignTop="@id/calculate_player_points_total"
+                android:layout_below="@+id/calculate_player_points_scienceTextView"
+                android:gravity="end"
+                android:text="New Text" />
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>
