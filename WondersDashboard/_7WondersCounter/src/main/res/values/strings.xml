@@ -50,4 +50,10 @@
     <string name="menu_dashboard">Score List</string>
     <string name="menu_edit">Edit Player Score</string>
     <string name="menu_info">Info</string>
+    <!-- Tutorial -->
+    <string name="tutorial_title">Tutorial</string>
+    <string name="tutorial_info">Info about used libraries</string>
+    <string name="tutorial_dashboard">Player Dashboard</string>
+    <string name="tutorial_edit">Edit Player Points</string>
+    <!--End tutorial -->
 </resources>

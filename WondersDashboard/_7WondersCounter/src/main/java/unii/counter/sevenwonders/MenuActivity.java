@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,6 +16,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,7 +28,12 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import tourguide.tourguide.Overlay;
+import tourguide.tourguide.Pointer;
+import tourguide.tourguide.ToolTip;
+import tourguide.tourguide.TourGuide;
 import unii.counter.sevenwonders.config.Config;
+import unii.counter.sevenwonders.helper.MenuHelper;
 import unii.counter.sevenwonders.validation.ValidationHelper;
 import unii.counter.sevenwonders.view.adapter.PlayerListAdapter;
 import unii.counter.sevenwonders.view.dialog.InfoDialog;
@@ -36,6 +43,7 @@ public class MenuActivity extends ActionBarActivity {
     private static final String TAG_DIALOG_INFO = "INFO_DIALOG_TAG";
     private PlayerListAdapter mPlayerListAdapter;
     private List<String> mPlayerList;
+    private TourGuide mTutorialHandler = null;
 
     @Bind(R.id.settings_playerListView)
     DynamicListView mPlayerDynamicListView;
@@ -98,6 +106,7 @@ public class MenuActivity extends ActionBarActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
+        setMenuActions((ImageView) menu.getItem(0).getActionView());
         return true;
     }
 
@@ -219,5 +228,39 @@ public class MenuActivity extends ActionBarActivity {
 
         DialogFragment newFragment = InfoDialog.newInstance(getString(R.string.info_dialog_title), getString(R.string.info_dialog_message));
         newFragment.show(ft, TAG_DIALOG_INFO);
+    }
+
+    private void setMenuActions(ImageView button) {
+        // just adding some padding to look better
+        int padding = MenuHelper.getHelperMenuPadding(getResources().getDisplayMetrics().density);
+        button.setPadding(padding, padding, padding, padding);
+
+        // set an image
+        button.setImageDrawable(this.getResources().getDrawable(R.mipmap.ic_info));
+
+        ToolTip toolTip = new ToolTip()
+                .setTitle(getString(R.string.tutorial_title))
+                .setDescription(getString(R.string.tutorial_info))
+                .setGravity(Gravity.LEFT | Gravity.BOTTOM);
+
+        mTutorialHandler = TourGuide.init(this).with(TourGuide.Technique.Click)
+                .motionType(TourGuide.MotionType.AllowAll)
+                .setPointer(new Pointer())
+                .setToolTip(toolTip)
+                .setOverlay(new Overlay().setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        mTutorialHandler.cleanUp();
+
+                    }
+                }))
+                .playOn(button);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDialog();
+            }
+        });
     }
 }

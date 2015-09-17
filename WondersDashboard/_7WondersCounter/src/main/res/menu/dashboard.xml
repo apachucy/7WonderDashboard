@@ -5,16 +5,18 @@
 
     <item
         android:id="@+id/action_dashboard"
+        android:icon="@mipmap/ic_dashboard"
         android:orderInCategory="100"
         android:title="@string/menu_dashboard"
-        android:icon="@mipmap/ic_dashboard"
+        app:actionViewClass="android.widget.ImageView"
         app:showAsAction="always" />
 
     <item
         android:id="@+id/action_edit"
+        android:icon="@mipmap/ic_edit"
         android:orderInCategory="200"
         android:title="@string/menu_edit"
-        android:icon="@mipmap/ic_edit"
+        app:actionViewClass="android.widget.ImageView"
         app:showAsAction="always" />
 
 </menu>
