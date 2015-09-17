@@ -37,9 +37,8 @@
             android:layout_toRightOf="@id/settings_ic_newPlayer"
             android:ems="10"
             android:hint="@string/settings_newPlayerHint"
-            android:singleLine="true">
-            <requestFocus />
-        </EditText>
+            android:singleLine="true" />
+
 
         <Button
             android:id="@+id/settings_addPlayerButton"
@@ -72,7 +71,8 @@
             android:layout_marginBottom="@dimen/button_margin_big"
             android:layout_marginTop="@dimen/button_margin_big"
             android:elevation="@dimen/elevation_standard"
-            android:text="@string/settings_startGameButton" />
+            android:text="@string/settings_startGameButton"/>
+
 
         <TextView
             android:id="@+id/settings_playerListTextView"

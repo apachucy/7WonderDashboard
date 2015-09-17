@@ -59,12 +59,13 @@
             android:gravity="center" />
     </LinearLayout>
 
-    <ListView
-        android:id="@+id/table_playerListView"
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/table_playerRecyclerView"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/table_winner_data"
-        android:layout_below="@id/table_header" />
-
+        android:layout_below="@id/table_header"
+        android:scrollbars="vertical" />
 
 </RelativeLayout>

@@ -20,7 +20,7 @@ android {
 
 dependencies {
     //gradlew dependencies !
-   // compile project(':ninePathLibrary')
+    compile 'com.android.support:recyclerview-v7:21.0.3'
     compile files('libs/listviewanimations_lib-core_3.1.0.jar')
     compile files('libs/listviewanimations_lib-manipulation_3.1.0.jar')
     compile 'com.jakewharton:butterknife:7.0.1'
@@ -28,6 +28,6 @@ dependencies {
     compile 'com.android.support:appcompat-v7:21.0.3'
     compile ('com.github.worker8:tourguide:1.0.14-SNAPSHOT@aar'){
         transitive=true
-       // exclude group: com.nineoldandroids
+
     }
 }

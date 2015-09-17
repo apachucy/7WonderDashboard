@@ -4,10 +4,11 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ import butterknife.ButterKnife;
 import unii.counter.sevenwonders.R;
 import unii.counter.sevenwonders.pojo.PlayerScoreSheet;
 import unii.counter.sevenwonders.view.IPlayerScore;
-import unii.counter.sevenwonders.view.adapter.TablePointsAdapter;
+import unii.counter.sevenwonders.view.adapter.TablePointsRecyclerAdapter;
 
 /**
  * Created by Arkadiusz Pachucy on 2015-09-04.
@@ -27,15 +28,16 @@ import unii.counter.sevenwonders.view.adapter.TablePointsAdapter;
 public class ScoreSheetTableFragment extends Fragment {
     private Context mContext;
     private IPlayerScore mPlayerScore;
-    private TablePointsAdapter mTablePointsAdapter;
 
-    @Bind(R.id.table_playerListView)
-    ListView mPlayerListView;
     @Bind(R.id.table_winner_playerNameTextView)
     TextView mWinnerNameTextView;
     @Bind(R.id.table_winner_playerPointsTextView)
     TextView mWinnerPointsTextView;
 
+    @Bind(R.id.table_playerRecyclerView)
+    RecyclerView mRecyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
 
     @Override
     public void onAttach(Activity activity) {
@@ -49,8 +51,15 @@ public class ScoreSheetTableFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_score_sheet_table, container, false);
         ButterKnife.bind(this, view);
 
-        mTablePointsAdapter = new TablePointsAdapter(mContext, mPlayerScore.getPlayersScoreSheet(), mPlayerScore.getPlayerNames());
-        mPlayerListView.setAdapter(mTablePointsAdapter);
+
+        mRecyclerView.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(mContext);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+
+        mAdapter = new TablePointsRecyclerAdapter( mPlayerScore.getPlayersScoreSheet(), mPlayerScore.getPlayerNames());
+        mRecyclerView.setAdapter(mAdapter);
+
+
 
         List<PlayerScoreSheet> playerScoreSheetList = getBestPlayers();
         if (!playerScoreSheetList.isEmpty()) {
