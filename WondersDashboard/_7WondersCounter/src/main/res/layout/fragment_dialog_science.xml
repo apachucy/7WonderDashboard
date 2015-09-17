@@ -143,6 +143,7 @@
                 style="@style/button.dialog"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:elevation="@dimen/elevation_standard"
                 android:text="@string/science_button_calculate" />
 
             <Button
@@ -151,6 +152,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/dialog_calculateButton"
+                android:elevation="@dimen/elevation_standard"
                 android:text="@string/science_button_close" />
         </RelativeLayout>
     </RelativeLayout>

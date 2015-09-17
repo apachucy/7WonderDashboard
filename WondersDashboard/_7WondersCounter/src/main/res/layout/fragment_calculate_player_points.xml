@@ -208,7 +208,7 @@
 
             <TextView
                 android:id="@+id/calculate_player_points_scienceTextView"
-                style="@style/textView"
+                style="@style/textView.item"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/calculate_player_points_science"
@@ -218,12 +218,12 @@
                 android:layout_alignStart="@id/calculate_player_points_guildEditText"
                 android:layout_alignTop="@id/calculate_player_points_science"
                 android:layout_below="@+id/calculate_player_points_guildEditText"
-                android:gravity="end"
+                android:gravity="center"
                 android:text="New Text" />
 
             <TextView
                 android:id="@+id/calculate_player_points_totalTextView"
-                style="@style/textView"
+                style="@style/textView.item"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/calculate_player_points_total"
@@ -233,7 +233,7 @@
                 android:layout_alignStart="@id/calculate_player_points_scienceTextView"
                 android:layout_alignTop="@id/calculate_player_points_total"
                 android:layout_below="@+id/calculate_player_points_scienceTextView"
-                android:gravity="end"
+                android:gravity="center"
                 android:text="New Text" />
         </RelativeLayout>
     </ScrollView>

@@ -33,10 +33,7 @@
 
     <style name="background.dialog"></style>
 
-    <style name="textView" parent="@android:style/Widget.TextView">
-
-
-    </style>
+    <style name="textView" parent="@android:style/Widget.TextView"></style>
 
     <style name="textView.header"></style>
 
@@ -44,17 +41,17 @@
         <item name="android:textColor">@color/red</item>
     </style>
 
-    <style name="textView.item"></style>
 
     <!-- Edit Text -->
     <style name="editText" parent="@android:style/Widget.EditText">
-
         <item name="android:textColorHint">@color/grey_dark</item>
     </style>
 
     <style name="editText.dialog"></style>
 
     <style name="editText.item"></style>
+
+    <style name="textView.item"></style>
 
     <style name="button" parent="@android:style/Widget.Button">
         <item name="android:background">@drawable/button_background_blue</item>

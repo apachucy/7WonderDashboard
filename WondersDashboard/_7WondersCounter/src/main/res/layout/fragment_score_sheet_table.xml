@@ -4,9 +4,38 @@
     android:layout_height="match_parent">
 
     <LinearLayout
+        android:id="@+id/table_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:id="@+id/table_header_playerNameTextView"
+            style="@style/textView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:gravity="center"
+            android:text="@string/dashboard_player_name" />
+
+        <TextView
+            android:id="@+id/table_header_playerPointsTextView"
+            style="@style/textView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:gravity="center"
+            android:text="@string/dashboard_player_points" />
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/table_winner_data"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:orientation="horizontal">
@@ -18,8 +47,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:gravity="center"
-            android:text="@string/dashboard_player_name" />
+            android:ellipsize="marquee"
+            android:gravity="center" />
 
         <TextView
             android:id="@+id/table_winner_playerPointsTextView"
@@ -27,13 +56,15 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:gravity="center"
-            android:text="@string/dashboard_player_points" />
+            android:gravity="center" />
     </LinearLayout>
 
     <ListView
         android:id="@+id/table_playerListView"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/table_winner_data" />
+        android:layout_above="@id/table_winner_data"
+        android:layout_below="@id/table_header" />
+
+
 </RelativeLayout>

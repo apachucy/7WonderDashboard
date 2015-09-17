@@ -5,11 +5,18 @@
     <string name="action_settings">Settings</string>
 
     <!-- Dialogs -->
+    <!--Science Dialog -->
     <string name="science_dialog_name">Science Calculation</string>
     <string name="science_calculation">Points from science: %1$d</string>
     <string name="science_button_calculate">Calculate</string>
     <string name="science_button_close">Close</string>
     <string name="science_text_message">Enter the numbers of card</string>
+    <!--End Science Dialog -->
+    <!-- Info Dialog -->
+    <string name="info_dialog_title">Info</string>
+    <string name="info_dialog_message">Icons by: Piotr Semeniuk,\nUsed libraries: ninePathLibrary, listviewanimations and butterknife</string>
+    <!-- End Info dialog-->
+    <!-- End Dialogs -->
     <!-- Settings -->
     <string name="settings_addPlayerText">Add new player</string>
     <string name="settings_newPlayerHint"> Player name</string>
@@ -38,7 +45,9 @@
     <!--Dashboard -->
     <string name="dashboard_player_name">Player</string>
     <string name="dashboard_player_points">Points</string>
+    <string name="dashboard_player_most_points">Most Points: </string>
     <!--DashBoard menu -->
     <string name="menu_dashboard">Score List</string>
     <string name="menu_edit">Edit Player Score</string>
+    <string name="menu_info">Info</string>
 </resources>
