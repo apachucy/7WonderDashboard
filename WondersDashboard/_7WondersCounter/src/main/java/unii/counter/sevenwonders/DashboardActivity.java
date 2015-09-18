@@ -46,6 +46,7 @@ public class DashboardActivity extends ActionBarActivity implements IPlayerScore
     private static final String TAG_FRAGMENT_CATEGORY_GRID = "ADD_POINT_VIEW";
     private static final String TAG_FRAGMENT_PLAYER_INPUT_POINTS = "TAG_FRAGMENT_PLAYER_INPUT_POINTS";
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,6 +88,7 @@ public class DashboardActivity extends ActionBarActivity implements IPlayerScore
 
         } else {
             getSupportFragmentManager().beginTransaction().replace(R.id.table_content_frame, fragment, tag).commit();
+            //getSupportFragmentManager().beginTransaction().add(R.id.table_content_frame, fragment, tag).addToBackStack(null).commit();
         }
     }
 
@@ -129,10 +131,24 @@ public class DashboardActivity extends ActionBarActivity implements IPlayerScore
 
     @Override
     public void onBackPressed() {
-        Intent setIntent = new Intent(Intent.ACTION_MAIN);
-        setIntent.addCategory(Intent.CATEGORY_HOME);
-        setIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(setIntent);
+        // int count = getSupportFragmentManager().getBackStackEntryCount();
+        // int count = getSupportFragmentManager().getBackStackEntryCount();
+
+        //  if (count == 0) {
+        Fragment fragment = getSupportFragmentManager().findFragmentByTag(TAG_FRAGMENT_PLAYER_INPUT_POINTS);
+        if (fragment == null) {
+            Intent setIntent = new Intent(Intent.ACTION_MAIN);
+            setIntent.addCategory(Intent.CATEGORY_HOME);
+            setIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(setIntent);
+        } else {
+            replaceFragments(new GridCategoryFragment(), TAG_FRAGMENT_CATEGORY_GRID);
+        }
+        // } else {
+        //     getSupportFragmentManager().popBackStackImmediate();
+        // }
+
+
     }
 
     private void setMenuActions(ImageView dashboardButton, ImageView editButton) {

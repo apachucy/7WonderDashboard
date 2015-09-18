@@ -73,4 +73,5 @@ public class InputPointsFragment extends Fragment {
         ButterKnife.unbind(this);
     }
 
+
 }
