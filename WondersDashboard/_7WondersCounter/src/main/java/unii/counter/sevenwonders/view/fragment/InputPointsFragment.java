@@ -18,6 +18,8 @@ import unii.counter.sevenwonders.helper.Category;
 import unii.counter.sevenwonders.view.IPlayerScore;
 import unii.counter.sevenwonders.view.adapter.DividerItemDecorator;
 import unii.counter.sevenwonders.view.adapter.PlayerPointsRecyclerAdapter;
+import unii.counter.sevenwonders.view.adapter.PointsType;
+import unii.counter.sevenwonders.view.adapter.SciencePointsRecyclerAdapter;
 
 /**
  * Created by apachucy on 2015-09-18.
@@ -55,8 +57,11 @@ public class InputPointsFragment extends Fragment {
         mLayoutManager = new LinearLayoutManager(mContext);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.addItemDecoration(new DividerItemDecorator(mContext, DividerItemDecorator.VERTICAL_LIST));
-        mPointsRecyclerAdapter = new PlayerPointsRecyclerAdapter(mPlayerScore.getPlayersScoreSheet(), mPlayerScore.getPlayerNames(), mSelectedCategory.getPointsType());
-
+        if (mSelectedCategory.getPointsType() != PointsType.POINTS_SCIENCE) {
+            mPointsRecyclerAdapter = new PlayerPointsRecyclerAdapter(mPlayerScore.getPlayersScoreSheet(), mPlayerScore.getPlayerNames(), mSelectedCategory.getPointsType());
+        } else {
+            mPointsRecyclerAdapter = new SciencePointsRecyclerAdapter(mContext, mPlayerScore.getPlayersScoreSheet(), mPlayerScore.getPlayerNames());
+        }
         mRecyclerView.setAdapter(mPointsRecyclerAdapter);
 
         return view;

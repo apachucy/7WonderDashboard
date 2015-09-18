@@ -25,8 +25,7 @@ import unii.counter.sevenwonders.view.adapter.OnGridItemSelected;
  * Created by Arkadiusz Pachucy on 2015-09-03.
  */
 public class GridCategoryFragment extends Fragment {
-    private static final String SCIENCE_DIALOG_TAG = PlayerScoreSheet.class
-            .getName() + "SCIENCE_DIALOG_TAG";
+
 
     private Context mContext;
     private OnGridItemSelected mOnGridItemSelectedListener;
