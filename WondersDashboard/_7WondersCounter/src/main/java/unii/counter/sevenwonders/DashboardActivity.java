@@ -19,18 +19,20 @@ import java.util.Map;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import tourguide.tourguide.Overlay;
-import tourguide.tourguide.Pointer;
 import tourguide.tourguide.Sequence;
 import tourguide.tourguide.ToolTip;
 import tourguide.tourguide.TourGuide;
 import unii.counter.sevenwonders.config.Config;
+import unii.counter.sevenwonders.helper.Category;
 import unii.counter.sevenwonders.helper.MenuHelper;
 import unii.counter.sevenwonders.pojo.PlayerScoreSheet;
 import unii.counter.sevenwonders.view.IPlayerScore;
-import unii.counter.sevenwonders.view.fragment.PlayerScoreSheetFragment;
-import unii.counter.sevenwonders.view.fragment.ScoreSheetTableFragment;
+import unii.counter.sevenwonders.view.adapter.OnGridItemSelected;
+import unii.counter.sevenwonders.view.fragment.GridCategoryFragment;
+import unii.counter.sevenwonders.view.fragment.DashboardFragment;
+import unii.counter.sevenwonders.view.fragment.InputPointsFragment;
 
-public class DashboardActivity extends ActionBarActivity implements IPlayerScore {
+public class DashboardActivity extends ActionBarActivity implements IPlayerScore, OnGridItemSelected {
 
     @Bind(R.id.toolbar)
     Toolbar mToolBar;
@@ -41,7 +43,8 @@ public class DashboardActivity extends ActionBarActivity implements IPlayerScore
 
 
     private static final String TAG_FRAGMENT_SCORE_SHEET_TABLE = "DASHBOARD_LIST";
-    private static final String TAG_FRAGMENT_PLAYER_SCORE_SHEET = "ADD_POINT_VIEW";
+    private static final String TAG_FRAGMENT_CATEGORY_GRID = "ADD_POINT_VIEW";
+    private static final String TAG_FRAGMENT_PLAYER_INPUT_POINTS = "TAG_FRAGMENT_PLAYER_INPUT_POINTS";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +77,7 @@ public class DashboardActivity extends ActionBarActivity implements IPlayerScore
         mToolBar.setLogoDescription(R.string.app_name);
         mToolBar.setTitleTextColor(getResources().getColor(R.color.white));
         mToolBar.setTitle(R.string.app_name);
-        replaceFragments(new ScoreSheetTableFragment(), TAG_FRAGMENT_SCORE_SHEET_TABLE);
+        replaceFragments(new DashboardFragment(), TAG_FRAGMENT_SCORE_SHEET_TABLE);
     }
 
     private void replaceFragments(Fragment fragment, String tag) {
@@ -102,9 +105,9 @@ public class DashboardActivity extends ActionBarActivity implements IPlayerScore
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_dashboard) {
-            replaceFragments(new ScoreSheetTableFragment(), TAG_FRAGMENT_SCORE_SHEET_TABLE);
+            replaceFragments(new DashboardFragment(), TAG_FRAGMENT_SCORE_SHEET_TABLE);
         } else if (id == R.id.action_edit) {
-            replaceFragments(new PlayerScoreSheetFragment(), TAG_FRAGMENT_PLAYER_SCORE_SHEET);
+            replaceFragments(new GridCategoryFragment(), TAG_FRAGMENT_CATEGORY_GRID);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -156,14 +159,14 @@ public class DashboardActivity extends ActionBarActivity implements IPlayerScore
         dashboardButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                replaceFragments(new ScoreSheetTableFragment(), TAG_FRAGMENT_SCORE_SHEET_TABLE);
+                replaceFragments(new DashboardFragment(), TAG_FRAGMENT_SCORE_SHEET_TABLE);
             }
         });
 
         editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                replaceFragments(new PlayerScoreSheetFragment(), TAG_FRAGMENT_PLAYER_SCORE_SHEET);
+                replaceFragments(new GridCategoryFragment(), TAG_FRAGMENT_CATEGORY_GRID);
             }
         });
     }
@@ -187,5 +190,14 @@ public class DashboardActivity extends ActionBarActivity implements IPlayerScore
 
         return TourGuide.init(this)
                 .setToolTip(toolTipEdit).playLater(editImageView);
+    }
+
+    @Override
+    public void onCategorySelected(Category categorySelected) {
+        Fragment fragment = new InputPointsFragment();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(Config.BUNDLE_CATEGORY_SELECTED, categorySelected);
+        fragment.setArguments(bundle);
+        replaceFragments(fragment, TAG_FRAGMENT_PLAYER_INPUT_POINTS);
     }
 }

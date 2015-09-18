@@ -20,12 +20,13 @@ import butterknife.ButterKnife;
 import unii.counter.sevenwonders.R;
 import unii.counter.sevenwonders.pojo.PlayerScoreSheet;
 import unii.counter.sevenwonders.view.IPlayerScore;
+import unii.counter.sevenwonders.view.adapter.DividerItemDecorator;
 import unii.counter.sevenwonders.view.adapter.TablePointsRecyclerAdapter;
 
 /**
  * Created by Arkadiusz Pachucy on 2015-09-04.
  */
-public class ScoreSheetTableFragment extends Fragment {
+public class DashboardFragment extends Fragment {
     private Context mContext;
     private IPlayerScore mPlayerScore;
 
@@ -55,20 +56,24 @@ public class ScoreSheetTableFragment extends Fragment {
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(mContext);
         mRecyclerView.setLayoutManager(mLayoutManager);
-
-        mAdapter = new TablePointsRecyclerAdapter( mPlayerScore.getPlayersScoreSheet(), mPlayerScore.getPlayerNames());
+        mRecyclerView.addItemDecoration(new DividerItemDecorator(mContext, DividerItemDecorator.VERTICAL_LIST));
+        mAdapter = new TablePointsRecyclerAdapter(mPlayerScore.getPlayersScoreSheet(), mPlayerScore.getPlayerNames());
         mRecyclerView.setAdapter(mAdapter);
 
 
+        return view;
+    }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        calculatePlayerTotalPoints();
         List<PlayerScoreSheet> playerScoreSheetList = getBestPlayers();
         if (!playerScoreSheetList.isEmpty()) {
             mWinnerPointsTextView.setText(playerScoreSheetList.get(0).getGamePoints() + "");
             mWinnerNameTextView.setText(playerNameToString(playerScoreSheetList));
         }
-        return view;
     }
-
 
     @Override
     public void onDestroy() {
@@ -76,6 +81,12 @@ public class ScoreSheetTableFragment extends Fragment {
         ButterKnife.unbind(this);
     }
 
+
+    private void calculatePlayerTotalPoints() {
+        for(String playerName: mPlayerScore.getPlayerNames()){
+            mPlayerScore.getPlayerScoreSheet(playerName).calculateTotalPoints();
+        }
+    }
 
     private List<PlayerScoreSheet> getBestPlayers() {
         List<PlayerScoreSheet> playerScoreSheetList = new ArrayList<>();
@@ -103,7 +114,7 @@ public class ScoreSheetTableFragment extends Fragment {
     }
 
     private String playerNameToString(List<PlayerScoreSheet> playerList) {
-        String playerNames = getResources().getString(R.string.dashboard_player_most_points)+" ";
+        String playerNames = getResources().getString(R.string.dashboard_player_most_points) + " ";
         for (PlayerScoreSheet player : playerList) {
             playerNames += player.getPlayerName() + " ";
         }
