@@ -14,7 +14,7 @@
     <!--End Science Dialog -->
     <!-- Info Dialog -->
     <string name="info_dialog_title">Info</string>
-    <string name="info_dialog_message">Icons by: Piotr Semeniuk,\nUsed libraries: ninePathLibrary, listviewanimations and butterknife</string>
+    <string name="info_dialog_message">Icons by: Piotr Semeniuk,\nUsed libraries: ninePathLibrary, listviewanimations, tour guide and butterknife</string>
     <!-- End Info dialog-->
     <!-- End Dialogs -->
     <!-- Settings -->

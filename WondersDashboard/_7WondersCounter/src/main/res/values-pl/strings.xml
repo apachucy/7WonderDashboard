@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">7WondersCounter</string>
+    <string name="dashboard_player_most_points">Najwięcej pkt:</string>
+    <string name="dashboard_player_name">Gracz</string>
+    <string name="dashboard_player_points">Pkt</string>
+    <string name="info_dialog_message">Ikony: Piotr Semeniuk,\nWykorzystane biblioteki: ninePathLibrary, listviewanimations tour guide and butterknife</string>
+    <string name="info_dialog_title">Informacja</string>
+    <string name="list_header_black_points">Czarne</string>
+    <string name="list_header_civil_points">Cywilizacja</string>
+    <string name="list_header_gold_points">Złoto</string>
+    <string name="list_header_guild_points">Gildia</string>
+    <string name="list_header_player_name">Imię gracza</string>
+    <string name="list_header_science_points">Nauka</string>
+    <string name="list_header_total_points">Wynik</string>
+    <string name="list_header_trade_points">Handel</string>
+    <string name="list_header_war_points">Wojna</string>
+    <string name="list_header_wonder_points">Cuda</string>
+    <string name="menu_dashboard">List puntków</string>
+    <string name="menu_edit">Edytuj wynik gracza</string>
+    <string name="menu_info">Informacja</string>
+    <string name="science_button_calculate">Policz</string>
+    <string name="science_button_close">Zamknij</string>
+    <string name="science_calculation">Punkty za naukę: %1$d</string>
+    <string name="science_dialog_name">Kalkulator Nauki</string>
+    <string name="science_text_message">Wprowadź wartości przy obrazkach</string>
+    <string name="settings_addPlayerButton">Dodaj</string>
+    <string name="settings_addPlayerText">Dodaj gracza</string>
+    <string name="settings_game_extensions">Użyj dodatków</string>
+    <string name="settings_newPlayerHint">Imię gracza</string>
+    <string name="settings_playerListText">Lista graczy:</string>
+    <string name="settings_startGameButton">Start</string>
+    <string name="tutorial_dashboard">Lista punktów</string>
+    <string name="tutorial_edit">Wprowadź punkty</string>
+    <string name="tutorial_info">Informacje o bibliotekach</string>
+    <string name="tutorial_title">Tutorial</string>
+    <string name="warning_add_players">Dodaj więcej graczy</string>
+    <string name="warning_name_added">Gracz został poprzednio dodany</string>
+    <string name="warning_not_yet_implemented">Opcja nie została jeszcze zaimplementowana</string>
+    <string name="warning_player_name_not_empty">Wprowadź imię zawodnika</string>
+</resources>
