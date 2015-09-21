@@ -29,7 +29,7 @@ public class GridCategoryRecyclerAdapter extends RecyclerView.Adapter<GridCatego
 
     @Override
     public GridCategoryRecyclerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_category_spinner, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_category_grid, parent, false);
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }

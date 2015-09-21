@@ -19,6 +19,7 @@ import java.util.Map;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import tourguide.tourguide.Overlay;
+import tourguide.tourguide.Pointer;
 import tourguide.tourguide.Sequence;
 import tourguide.tourguide.ToolTip;
 import tourguide.tourguide.TourGuide;
@@ -26,6 +27,7 @@ import unii.counter.sevenwonders.config.Config;
 import unii.counter.sevenwonders.helper.Category;
 import unii.counter.sevenwonders.helper.MenuHelper;
 import unii.counter.sevenwonders.pojo.PlayerScoreSheet;
+import unii.counter.sevenwonders.sharedprefrences.SettingsPreferencesFactory;
 import unii.counter.sevenwonders.view.IPlayerScore;
 import unii.counter.sevenwonders.view.adapter.OnGridItemSelected;
 import unii.counter.sevenwonders.view.fragment.GridCategoryFragment;
@@ -88,7 +90,6 @@ public class DashboardActivity extends ActionBarActivity implements IPlayerScore
 
         } else {
             getSupportFragmentManager().beginTransaction().replace(R.id.table_content_frame, fragment, tag).commit();
-            //getSupportFragmentManager().beginTransaction().add(R.id.table_content_frame, fragment, tag).addToBackStack(null).commit();
         }
     }
 
@@ -131,10 +132,7 @@ public class DashboardActivity extends ActionBarActivity implements IPlayerScore
 
     @Override
     public void onBackPressed() {
-        // int count = getSupportFragmentManager().getBackStackEntryCount();
-        // int count = getSupportFragmentManager().getBackStackEntryCount();
 
-        //  if (count == 0) {
         Fragment fragment = getSupportFragmentManager().findFragmentByTag(TAG_FRAGMENT_PLAYER_INPUT_POINTS);
         if (fragment == null) {
             Intent setIntent = new Intent(Intent.ACTION_MAIN);
@@ -142,11 +140,9 @@ public class DashboardActivity extends ActionBarActivity implements IPlayerScore
             setIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(setIntent);
         } else {
+            //if current fragment is a fragment with inputting points - when pressing hardware back button let's go back to grid view
             replaceFragments(new GridCategoryFragment(), TAG_FRAGMENT_CATEGORY_GRID);
         }
-        // } else {
-        //     getSupportFragmentManager().popBackStackImmediate();
-        // }
 
 
     }
@@ -161,17 +157,18 @@ public class DashboardActivity extends ActionBarActivity implements IPlayerScore
         dashboardButton.setImageDrawable(this.getResources().getDrawable(R.mipmap.ic_dashboard));
         editButton.setImageDrawable(this.getResources().getDrawable(R.mipmap.ic_mode_edit));
 
+        if (SettingsPreferencesFactory.getInstance().getFirstRun()) {
+            Sequence sequence = new Sequence.SequenceBuilder().add(getDashboardTourGuide(dashboardButton), getEditTourGuide(editButton))
+                    .setDefaultOverlay(new Overlay().setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            mTutorialHandler.next();
+                        }
+                    })).setContinueMethod(Sequence.ContinueMethod.OverlayListener).setDefaultPointer(new Pointer()).build();
 
-        Sequence sequence = new Sequence.SequenceBuilder().add(getDashboardTourGuide(dashboardButton), getEditTourGuide(editButton))
-                .setDefaultOverlay(new Overlay().setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        mTutorialHandler.next();
-                    }
-                })).setContinueMethod(Sequence.ContinueMethod.OverlayListener).build();
-
-        mTutorialHandler = TourGuide.init(this).playInSequence(sequence);
-
+            mTutorialHandler = TourGuide.init(this).playInSequence(sequence);
+            SettingsPreferencesFactory.getInstance().setFirstRun(false);
+        }
         dashboardButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

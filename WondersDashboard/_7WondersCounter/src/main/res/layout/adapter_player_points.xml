@@ -9,7 +9,8 @@
         style="@style/textView.item"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="0.5"
+        android:layout_weight="0.8"
+        android:ellipsize="end"
         android:text="New Text" />
 
     <EditText
@@ -17,7 +18,7 @@
         style="@style/editText.item"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="0.5"
+        android:layout_weight="0.2"
         android:ems="10"
         android:inputType="number"
         android:maxLength="3" />

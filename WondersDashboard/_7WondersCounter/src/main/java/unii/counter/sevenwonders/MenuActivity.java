@@ -34,6 +34,7 @@ import tourguide.tourguide.ToolTip;
 import tourguide.tourguide.TourGuide;
 import unii.counter.sevenwonders.config.Config;
 import unii.counter.sevenwonders.helper.MenuHelper;
+import unii.counter.sevenwonders.sharedprefrences.SettingsPreferencesFactory;
 import unii.counter.sevenwonders.validation.ValidationHelper;
 import unii.counter.sevenwonders.view.adapter.PlayerListAdapter;
 import unii.counter.sevenwonders.view.dialog.InfoDialog;
@@ -237,25 +238,26 @@ public class MenuActivity extends ActionBarActivity {
 
         // set an image
         button.setImageDrawable(this.getResources().getDrawable(R.mipmap.ic_info));
+//1rst run
+        if (SettingsPreferencesFactory.getInstance().getFirstRun()) {
+            ToolTip toolTip = new ToolTip()
+                    .setTitle(getString(R.string.tutorial_title))
+                    .setDescription(getString(R.string.tutorial_info))
+                    .setGravity(Gravity.LEFT | Gravity.BOTTOM);
 
-        ToolTip toolTip = new ToolTip()
-                .setTitle(getString(R.string.tutorial_title))
-                .setDescription(getString(R.string.tutorial_info))
-                .setGravity(Gravity.LEFT | Gravity.BOTTOM);
+            mTutorialHandler = TourGuide.init(this).with(TourGuide.Technique.Click)
+                    .motionType(TourGuide.MotionType.AllowAll)
+                    .setPointer(new Pointer())
+                    .setToolTip(toolTip)
+                    .setOverlay(new Overlay().setOnClickListener(new OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            mTutorialHandler.cleanUp();
 
-        mTutorialHandler = TourGuide.init(this).with(TourGuide.Technique.Click)
-                .motionType(TourGuide.MotionType.AllowAll)
-                .setPointer(new Pointer())
-                .setToolTip(toolTip)
-                .setOverlay(new Overlay().setOnClickListener(new OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        mTutorialHandler.cleanUp();
-
-                    }
-                }))
-                .playOn(button);
-
+                        }
+                    }))
+                    .playOn(button);
+        }
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

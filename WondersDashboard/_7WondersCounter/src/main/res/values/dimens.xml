@@ -43,4 +43,6 @@
     <dimen name="button_margin_big">15dp</dimen>
     <!--elevation -->
     <dimen name="elevation_standard">5dp</dimen>
+    <!-- Image -->
+    <dimen name="image_size">48dp</dimen>
 </resources>

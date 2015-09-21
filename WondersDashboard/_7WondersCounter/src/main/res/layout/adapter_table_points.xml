@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.5"
         android:gravity="center"
+        android:ellipsize="end"
         android:paddingBottom="@dimen/textView_margin"
         android:paddingTop="@dimen/textView_margin"
         android:text="New Text" />

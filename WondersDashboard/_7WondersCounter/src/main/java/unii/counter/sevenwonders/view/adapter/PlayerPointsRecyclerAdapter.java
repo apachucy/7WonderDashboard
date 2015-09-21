@@ -20,7 +20,7 @@ import unii.counter.sevenwonders.pojo.PlayerScoreSheet;
  * Created by apachucy on 2015-09-18.
  */
 public class PlayerPointsRecyclerAdapter extends RecyclerView.Adapter<PlayerPointsRecyclerAdapter.ViewHolder> {
-
+    private final static String LEADING_ZERO_PATTERN = "^0+(?!$)";
     private Map<String, PlayerScoreSheet> mPlayerMap;
     private List<String> mPlayerNameList;
     private PointsType mModeSelected;
@@ -42,7 +42,9 @@ public class PlayerPointsRecyclerAdapter extends RecyclerView.Adapter<PlayerPoin
     @Override
     public void onBindViewHolder(PlayerPointsRecyclerAdapter.ViewHolder viewHolder, int i) {
         viewHolder.playerNameTextView.setText(mPlayerMap.get(mPlayerNameList.get(viewHolder.getPosition())).getPlayerName());
-        viewHolder.playerPointsEditText.setText(getPoints(i)+"");
+        viewHolder.playerPointsEditText.setText(getPoints(i) + "");
+
+
     }
 
     @Override
@@ -61,8 +63,17 @@ public class PlayerPointsRecyclerAdapter extends RecyclerView.Adapter<PlayerPoin
         void onTextChangedWarEditText(CharSequence s) {
             int value;
 
+
             if (s.length() > 0) {
-                value = Integer.parseInt(s.toString());
+                String input = s.toString();
+                if (s.length() > 1) {
+                    input = s.toString().replaceFirst(LEADING_ZERO_PATTERN, "");
+                    if (!s.toString().equals(input)) {
+                        playerPointsEditText.setText(input);
+                        playerPointsEditText.setSelection(input.length());
+                    }
+                }
+                value = Integer.parseInt(input);
             } else {
                 value = 0;
             }
