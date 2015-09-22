@@ -3,6 +3,8 @@ package unii.counter.sevenwonders.view.adapter;
 import java.util.List;
 
 import unii.counter.sevenwonders.R;
+import unii.counter.sevenwonders.view.fragment.MenuFragment;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +22,8 @@ public class PlayerListAdapter extends ArrayAdapter<String> {
 		mContext = context;
 		mPlayerList = playerName;
 	}
+
+
 
 	@Override
 	public int getCount() {

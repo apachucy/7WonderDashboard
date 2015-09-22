@@ -110,6 +110,9 @@ public class PlayerPointsRecyclerAdapter extends RecyclerView.Adapter<PlayerPoin
             case POINTS_SCIENCE:
                 mPlayerMap.get(mPlayerNameList.get(playerPosition)).setSciencePoints(points);
                 break;
+            case POINTS_LEADERS:
+                mPlayerMap.get(mPlayerNameList.get(playerPosition)).setLeadersPoints(points);
+
             default:
                 break;
         }
@@ -139,6 +142,8 @@ public class PlayerPointsRecyclerAdapter extends RecyclerView.Adapter<PlayerPoin
             case POINTS_SCIENCE:
                 points = mPlayerMap.get(mPlayerNameList.get(playerPosition)).getSciencePoints();
                 break;
+            case POINTS_LEADERS:
+                points = mPlayerMap.get(mPlayerNameList.get(playerPosition)).getLeadersPoints();
             default:
                 break;
         }

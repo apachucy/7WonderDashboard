@@ -30,5 +30,6 @@
 
     <color name="primary">#009688</color>
     <color name="primary_dark">#004d40</color>
-    <color name="accent">#b2dfdb</color>
+    <color name="windows_backGround">#b2dfdb</color>
+    <color name="accent">#4db6ac</color>
 </resources>

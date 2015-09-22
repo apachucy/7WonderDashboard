@@ -52,7 +52,7 @@ public class DashboardActivity extends ActionBarActivity implements IPlayerScore
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_table);
+        setContentView(R.layout.activity_dashboard);
         ButterKnife.bind(this);
 
         // if bundle has some elements

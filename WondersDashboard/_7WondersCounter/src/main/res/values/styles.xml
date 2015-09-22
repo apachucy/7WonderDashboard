@@ -19,6 +19,8 @@
         <!-- colorAccent is used as the default value for colorControlActivated,
              which is used to tint widgets -->
         <item name="colorAccent">@color/accent</item>
+
+        <item name="android:windowBackground">@color/windows_backGround</item>
         <item name="windowActionBar">false</item>
     </style>
 
@@ -28,7 +30,7 @@
     </style>
 
     <style name="background">
-        <item name="android:background">@color/accent</item>
+        <item name="android:background">@color/windows_backGround</item>
     </style>
 
     <style name="background.dialog"></style>

@@ -17,7 +17,7 @@ import butterknife.ButterKnife;
 import unii.counter.sevenwonders.R;
 import unii.counter.sevenwonders.helper.Category;
 import unii.counter.sevenwonders.helper.CategoryHelper;
-import unii.counter.sevenwonders.pojo.PlayerScoreSheet;
+import unii.counter.sevenwonders.sharedprefrences.SettingsPreferencesFactory;
 import unii.counter.sevenwonders.view.adapter.GridCategoryRecyclerAdapter;
 import unii.counter.sevenwonders.view.adapter.OnGridItemSelected;
 
@@ -50,7 +50,7 @@ public class GridCategoryFragment extends Fragment {
         ButterKnife.bind(this, view);
 
         mRecyclerView.setHasFixedSize(true);
-        mCategoryList = CategoryHelper.getCategoryList(mContext);
+        mCategoryList = CategoryHelper.getCategoryList(mContext, SettingsPreferencesFactory.getInstance().getGameMode());
         mLayoutManager = new GridLayoutManager(mContext, 2);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mCategoryRecyclerAdapter = new GridCategoryRecyclerAdapter(mCategoryList, mOnGridItemSelected);

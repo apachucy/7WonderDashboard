@@ -19,6 +19,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import unii.counter.sevenwonders.R;
 import unii.counter.sevenwonders.pojo.PlayerScoreSheet;
+import unii.counter.sevenwonders.sharedprefrences.SettingsPreferencesFactory;
 import unii.counter.sevenwonders.view.IPlayerScore;
 import unii.counter.sevenwonders.view.adapter.DividerItemDecorator;
 import unii.counter.sevenwonders.view.adapter.TablePointsRecyclerAdapter;
@@ -83,8 +84,9 @@ public class DashboardFragment extends Fragment {
 
 
     private void calculatePlayerTotalPoints() {
-        for(String playerName: mPlayerScore.getPlayerNames()){
-            mPlayerScore.getPlayerScoreSheet(playerName).calculateTotalPoints();
+        int gameMode = SettingsPreferencesFactory.getInstance().getGameMode();
+        for (String playerName : mPlayerScore.getPlayerNames()) {
+            mPlayerScore.getPlayerScoreSheet(playerName).calculateTotalPoints(gameMode);
         }
     }
 

@@ -39,6 +39,7 @@
     <string name="list_header_science_points">Science</string>
     <string name="list_header_black_points">Black</string>
     <string name="list_header_total_points">Total</string>
+    <string name="list_header_leaders_points">Leaders</string>
     <!-- Extensions -->
     <string name="settings_game_extensions">Use extension dashboard</string>
 
@@ -50,10 +51,16 @@
     <string name="menu_dashboard">Score List</string>
     <string name="menu_edit">Edit Player Score</string>
     <string name="menu_info">Info</string>
+    <string name="menu_settings">Settings</string>
     <!-- Tutorial -->
     <string name="tutorial_title">Tutorial</string>
     <string name="tutorial_info">Info about used libraries</string>
     <string name="tutorial_dashboard">Player Dashboard</string>
     <string name="tutorial_edit">Edit Player Points</string>
     <!--End tutorial -->
+    <!-- Extension -->
+    <string name="settings_extension_question">Choose extension on:</string>
+    <string name="settings_extension_off">No extension</string>
+    <string name="settings_extension_leaders">Leaders</string>
+    <!-- End Extension -->
 </resources>

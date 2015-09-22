@@ -13,85 +13,13 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true" />
 
-    <RelativeLayout
+    <FrameLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:id="@+id/fragment_content_frame"
         android:layout_below="@id/toolbar"
         android:paddingBottom="@dimen/activity_vertical_margin"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin">
-
-        <ImageView
-            android:id="@+id/settings_ic_newPlayer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/settings_addPlayerEditText"
-            android:src="@mipmap/ic_person_add" />
-
-        <EditText
-            android:id="@+id/settings_addPlayerEditText"
-            style="@style/editText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/settings_ic_newPlayer"
-            android:ems="10"
-            android:hint="@string/settings_newPlayerHint"
-            android:singleLine="true" />
-
-
-        <Button
-            android:id="@+id/settings_addPlayerButton"
-            style="@style/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/settings_addPlayerEditText"
-            android:layout_marginLeft="@dimen/button_margin"
-            android:layout_toRightOf="@id/settings_addPlayerEditText"
-            android:elevation="@dimen/elevation_standard"
-            android:text="@string/settings_addPlayerButton" />
-
-        <TextView
-            android:id="@+id/settings_warningTextView"
-            style="@style/textView.warning"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/settings_addPlayerEditText"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="@dimen/textView_margin_big"
-            android:layout_marginTop="@dimen/textView_margin_big" />
-
-        <Button
-            android:id="@+id/settings_startGameButton"
-            style="@style/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/settings_warningTextView"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="@dimen/button_margin_big"
-            android:layout_marginTop="@dimen/button_margin_big"
-            android:elevation="@dimen/elevation_standard"
-            android:text="@string/settings_startGameButton"/>
-
-
-        <TextView
-            android:id="@+id/settings_playerListTextView"
-            style="@style/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/settings_startGameButton"
-            android:layout_marginBottom="@dimen/textView_margin"
-            android:text="@string/settings_playerListText"
-            android:textStyle="bold" />
-
-        <com.nhaarman.listviewanimations.itemmanipulation.DynamicListView
-            android:id="@+id/settings_playerListView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
-            android:layout_below="@id/settings_playerListTextView"
-            android:elevation="@dimen/elevation_standard" />
-    </RelativeLayout>
+        android:paddingTop="@dimen/activity_vertical_margin"/>
 </RelativeLayout>

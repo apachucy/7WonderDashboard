@@ -1,5 +1,7 @@
 package unii.counter.sevenwonders.pojo;
 
+import unii.counter.sevenwonders.sharedprefrences.GameModeConfig;
+
 public class PlayerScoreSheet {
 
     private String mPlayerName;
@@ -11,21 +13,20 @@ public class PlayerScoreSheet {
     private int mTradePoints;
     private int mSciencePoints;
     private int mGuildsPoints;
+    private int mLeadersPoints;
     //black card/leaders card
-    //private int mBlackCardPoints;
     private int mGamePoints;
 
     public PlayerScoreSheet(String playerName) {
         mPlayerName = playerName;
         mWarPoints = 0;
         mGoldPoints = 0;
-        //mNegativeGoldPoints = 0;
         mWonderPoints = 0;
         mCivilizationPoints = 0;
         mTradePoints = 0;
         mSciencePoints = 0;
         mGuildsPoints = 0;
-        //	mBlackCardPoints = 0;
+        mLeadersPoints = 0;
         mGamePoints = 0;
     }
 
@@ -94,14 +95,6 @@ public class PlayerScoreSheet {
         this.mGuildsPoints = mGuildsPoints;
     }
 
-    /*	public int getBlackCardPoints() {
-            return mBlackCardPoints;
-        }
-
-        public void setBlackCardPoints(int mBlackCardPoints) {
-            this.mBlackCardPoints = mBlackCardPoints;
-        }
-    */
     public int getGamePoints() {
         return mGamePoints;
     }
@@ -110,7 +103,22 @@ public class PlayerScoreSheet {
         this.mGamePoints = mGamePoints;
     }
 
-    public void calculateTotalPoints() {
+    public void calculateTotalPoints(int extension) {
         mGamePoints = mWarPoints + mGoldPoints + mWonderPoints + mCivilizationPoints + mTradePoints + mSciencePoints;
+        switch (extension) {
+            case GameModeConfig.GAME_MODE_LEADERS:
+                mGamePoints += mLeadersPoints;
+                break;
+            default:
+                break;
+        }
+    }
+
+    public int getLeadersPoints() {
+        return mLeadersPoints;
+    }
+
+    public void setLeadersPoints(int mLeadersPoints) {
+        this.mLeadersPoints = mLeadersPoints;
     }
 }
