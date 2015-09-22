@@ -27,6 +27,9 @@ public class SettingsFragment extends Fragment {
     @Bind(R.id.settings_game_mode_leaders)
     RadioButton mGameLeadersExtensionRadioButton;
 
+    @Bind(R.id.settings_game_mode_cities)
+    RadioButton mGameCitiesExtensionRadioButton;
+
     @OnCheckedChanged(R.id.settings_game_mode_normal)
     public void onCheckGameModeOffRadioButton(boolean checked) {
         if (checked) {
@@ -38,6 +41,13 @@ public class SettingsFragment extends Fragment {
     public void onCheckGameModeLeaderRadioButton(boolean checked) {
         if (checked) {
             SettingsPreferencesFactory.getInstance().setGameMode(GameModeConfig.GAME_MODE_LEADERS);
+        }
+    }
+
+    @OnCheckedChanged(R.id.settings_game_mode_cities)
+    public void onCheckGameModeCitiesRadioButton(boolean checked) {
+        if (checked) {
+            SettingsPreferencesFactory.getInstance().setGameMode(GameModeConfig.GAME_MODE_CITIES);
         }
     }
 
@@ -62,6 +72,9 @@ public class SettingsFragment extends Fragment {
                 break;
             case GameModeConfig.GAME_MODE_LEADERS:
                 mGameLeadersExtensionRadioButton.setChecked(true);
+                break;
+            case GameModeConfig.GAME_MODE_CITIES:
+                mGameCitiesExtensionRadioButton.setChecked(true);
                 break;
             default:
                 break;

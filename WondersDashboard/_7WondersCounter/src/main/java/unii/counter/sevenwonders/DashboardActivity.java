@@ -187,7 +187,7 @@ public class DashboardActivity extends ActionBarActivity implements IPlayerScore
     private TourGuide getDashboardTourGuide(ImageView dashboardImageView) {
         ToolTip toolTipDashboard = new ToolTip()
                 .setTitle(getString(R.string.tutorial_title))
-                .setDescription(getString(R.string.tutorial_dashboard))
+                .setDescription(getString(R.string.tutorial_dashboard)).setBackgroundColor(this.getResources().getColor(R.color.accent))
                 .setGravity(Gravity.LEFT | Gravity.BOTTOM);
 
         return TourGuide.init(this)
@@ -198,7 +198,7 @@ public class DashboardActivity extends ActionBarActivity implements IPlayerScore
 
         ToolTip toolTipEdit = new ToolTip()
                 .setTitle(getString(R.string.tutorial_title))
-                .setDescription(getString(R.string.tutorial_edit))
+                .setDescription(getString(R.string.tutorial_edit)).setBackgroundColor(this.getResources().getColor(R.color.accent))
                 .setGravity(Gravity.LEFT | Gravity.BOTTOM);
 
         return TourGuide.init(this)

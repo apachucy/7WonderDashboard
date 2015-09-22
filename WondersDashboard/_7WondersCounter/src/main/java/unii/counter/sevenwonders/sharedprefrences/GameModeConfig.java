@@ -9,4 +9,5 @@ public class GameModeConfig {
 
     public static final int GAME_MODE_NO_EXTENSIONS = 0;
     public static final int GAME_MODE_LEADERS = 1;
+    public static final int GAME_MODE_CITIES = 2;
 }

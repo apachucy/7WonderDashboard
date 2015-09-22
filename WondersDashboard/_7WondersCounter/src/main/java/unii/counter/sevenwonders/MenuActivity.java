@@ -134,7 +134,7 @@ public class MenuActivity extends ActionBarActivity implements IMenuFragment {
         if (SettingsPreferencesFactory.getInstance().getFirstRun()) {
             ToolTip toolTip = new ToolTip()
                     .setTitle(getString(R.string.tutorial_title))
-                    .setDescription(getString(R.string.tutorial_info))
+                    .setDescription(getString(R.string.tutorial_info)).setBackgroundColor(this.getResources().getColor(R.color.accent))
                     .setGravity(Gravity.LEFT | Gravity.BOTTOM);
 
             mTutorialHandler = TourGuide.init(this).with(TourGuide.Technique.Click)

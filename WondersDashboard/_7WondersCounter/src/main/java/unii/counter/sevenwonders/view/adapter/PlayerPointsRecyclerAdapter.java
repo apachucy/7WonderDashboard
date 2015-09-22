@@ -112,7 +112,13 @@ public class PlayerPointsRecyclerAdapter extends RecyclerView.Adapter<PlayerPoin
                 break;
             case POINTS_LEADERS:
                 mPlayerMap.get(mPlayerNameList.get(playerPosition)).setLeadersPoints(points);
-
+                break;
+            case POINTS_CITIES:
+                mPlayerMap.get(mPlayerNameList.get(playerPosition)).setCityPoints(points);
+                break;
+            case POINTS_LOANS:
+                mPlayerMap.get(mPlayerNameList.get(playerPosition)).setLoanPoints(points);
+                break;
             default:
                 break;
         }
@@ -144,10 +150,16 @@ public class PlayerPointsRecyclerAdapter extends RecyclerView.Adapter<PlayerPoin
                 break;
             case POINTS_LEADERS:
                 points = mPlayerMap.get(mPlayerNameList.get(playerPosition)).getLeadersPoints();
+                break;
+            case POINTS_CITIES:
+                points = mPlayerMap.get(mPlayerNameList.get(playerPosition)).getCityPoints();
+                break;
+            case POINTS_LOANS:
+                points = mPlayerMap.get(mPlayerNameList.get(playerPosition)).getLoanPoints();
+                break;
             default:
                 break;
         }
-
         return points;
     }
 }

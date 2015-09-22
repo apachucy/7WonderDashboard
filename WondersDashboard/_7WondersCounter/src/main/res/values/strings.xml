@@ -40,8 +40,8 @@
     <string name="list_header_black_points">Black</string>
     <string name="list_header_total_points">Total</string>
     <string name="list_header_leaders_points">Leaders</string>
-    <!-- Extensions -->
-    <string name="settings_game_extensions">Use extension dashboard</string>
+    <string name="list_header_cities_points">Cities</string>
+    <string name="list_header_loan_points">Loans</string>
 
     <!--Dashboard -->
     <string name="dashboard_player_name">Player</string>
@@ -62,5 +62,6 @@
     <string name="settings_extension_question">Choose extension on:</string>
     <string name="settings_extension_off">No extension</string>
     <string name="settings_extension_leaders">Leaders</string>
+    <string name="settings_extension_cities">Cities</string>
     <!-- End Extension -->
 </resources>

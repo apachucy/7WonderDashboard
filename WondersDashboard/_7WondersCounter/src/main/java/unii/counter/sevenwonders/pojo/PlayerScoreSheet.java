@@ -14,8 +14,11 @@ public class PlayerScoreSheet {
     private int mSciencePoints;
     private int mGuildsPoints;
     private int mLeadersPoints;
-    //black card/leaders card
+    //leader extension
     private int mGamePoints;
+    //city extension
+    private int mCityPoints;
+    private int mLoanPoints;
 
     public PlayerScoreSheet(String playerName) {
         mPlayerName = playerName;
@@ -28,6 +31,8 @@ public class PlayerScoreSheet {
         mGuildsPoints = 0;
         mLeadersPoints = 0;
         mGamePoints = 0;
+        mCityPoints = 0;
+        mLoanPoints = 0;
     }
 
     public String getPlayerName() {
@@ -108,7 +113,9 @@ public class PlayerScoreSheet {
         switch (extension) {
             case GameModeConfig.GAME_MODE_LEADERS:
                 mGamePoints += mLeadersPoints;
-                break;
+
+            case GameModeConfig.GAME_MODE_CITIES:
+                mGamePoints += mCityPoints - mLoanPoints;
             default:
                 break;
         }
@@ -120,5 +127,21 @@ public class PlayerScoreSheet {
 
     public void setLeadersPoints(int mLeadersPoints) {
         this.mLeadersPoints = mLeadersPoints;
+    }
+
+    public int getLoanPoints() {
+        return mLoanPoints;
+    }
+
+    public void setLoanPoints(int loan) {
+        mLoanPoints = loan;
+    }
+
+    public int getCityPoints() {
+        return mCityPoints;
+    }
+
+    public void setCityPoints(int cityPoints) {
+        mCityPoints = cityPoints;
     }
 }

@@ -32,6 +32,12 @@ public class CategoryHelper {
         switch (extension) {
             case GameModeConfig.GAME_MODE_LEADERS:
                 categoryList.add(new Category(context.getString(R.string.list_header_leaders_points), PointsType.POINTS_LEADERS, R.drawable.ic_leader));
+                break;
+            case GameModeConfig.GAME_MODE_CITIES:
+                categoryList.add(new Category(context.getString(R.string.list_header_leaders_points), PointsType.POINTS_LEADERS, R.drawable.ic_leader));
+                categoryList.add(new Category(context.getString(R.string.list_header_cities_points), PointsType.POINTS_CITIES, R.drawable.ic_city));
+                categoryList.add(new Category(context.getString(R.string.list_header_loan_points), PointsType.POINTS_LOANS, R.drawable.ic_loan));
+                break;
             default:
                 break;
         }

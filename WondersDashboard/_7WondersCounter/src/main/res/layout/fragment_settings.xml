@@ -38,5 +38,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/settings_extension_leaders" />
+
+        <RadioButton
+            android:id="@+id/settings_game_mode_cities"
+            style="@style/textView.item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/settings_extension_cities" />
     </RadioGroup>
 </RelativeLayout>
