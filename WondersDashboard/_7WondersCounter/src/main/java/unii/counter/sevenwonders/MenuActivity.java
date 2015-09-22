@@ -29,7 +29,6 @@ import unii.counter.sevenwonders.config.Config;
 import unii.counter.sevenwonders.helper.MenuHelper;
 import unii.counter.sevenwonders.sharedprefrences.SettingsPreferencesFactory;
 import unii.counter.sevenwonders.view.dialog.InfoDialog;
-import unii.counter.sevenwonders.view.fragment.GridCategoryFragment;
 import unii.counter.sevenwonders.view.fragment.IMenuFragment;
 import unii.counter.sevenwonders.view.fragment.MenuFragment;
 import unii.counter.sevenwonders.view.fragment.SettingsFragment;
@@ -133,34 +132,15 @@ public class MenuActivity extends ActionBarActivity implements IMenuFragment {
         settingsButton.setImageDrawable(this.getResources().getDrawable(R.mipmap.ic_settings_applications));
         //1rst run
         if (SettingsPreferencesFactory.getInstance().getFirstRun()) {
-          /*  ToolTip toolTip = new ToolTip()
-                    .setTitle(getString(R.string.tutorial_title))
-                    .setDescription(getString(R.string.tutorial_info)).setBackgroundColor(this.getResources().getColor(R.color.accent))
-                    .setGravity(Gravity.LEFT | Gravity.BOTTOM);*/
-
-
-                Sequence sequence = new Sequence.SequenceBuilder().add(getAboutTourGuide(aboutButton), getSettingsTourGuide(settingsButton))
-                        .setDefaultOverlay(new Overlay().setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                mTutorialHandler.next();
-                            }
-                        })).setContinueMethod(Sequence.ContinueMethod.OverlayListener).setDefaultPointer(new Pointer()).build();
-
-                mTutorialHandler = TourGuide.init(this).playInSequence(sequence);
-           /* mTutorialHandler = TourGuide.init(this).with(TourGuide.Technique.Click)
-                    .motionType(TourGuide.MotionType.AllowAll)
-                    .setPointer(new Pointer())
-                    .setToolTip(toolTip)
-                    .setOverlay(new Overlay().setOnClickListener(new OnClickListener() {
+            Sequence sequence = new Sequence.SequenceBuilder().add(getAboutTourGuide(aboutButton), getSettingsTourGuide(settingsButton))
+                    .setDefaultOverlay(new Overlay().setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            mTutorialHandler.cleanUp();
-
+                            mTutorialHandler.next();
                         }
-                    }))
-                    .playOn(aboutButton);*/
-        }//TODO: TOOLTIP FOR SETTINGS
+                    })).setContinueMethod(Sequence.ContinueMethod.OverlayListener).setDefaultPointer(new Pointer()).build();
+            mTutorialHandler = TourGuide.init(this).playInSequence(sequence);
+        }
         aboutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

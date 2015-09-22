@@ -38,4 +38,14 @@
     <string name="warning_name_added">Gracz został poprzednio dodany</string>
     <string name="warning_not_yet_implemented">Opcja nie została jeszcze zaimplementowana</string>
     <string name="warning_player_name_not_empty">Wprowadź imię zawodnika</string>
+    <string name="list_header_cities_points">Miasta</string>
+    <string name="list_header_leaders_points">Liderzy</string>
+    <string name="action_settings">Ustawienia</string>
+    <string name="list_header_loan_points">Pożyczki</string>
+    <string name="menu_settings">Ustawienia</string>
+    <string name="settings_extension_cities">Miasta</string>
+    <string name="settings_extension_leaders">Liderzy</string>
+    <string name="settings_extension_off">Bez dodatków</string>
+    <string name="settings_extension_question">Wybierz dodatki:</string>
+    <string name="tutorial_settings">Konfiguracja dodatków do gry</string>
 </resources>

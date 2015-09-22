@@ -57,12 +57,13 @@
     <string name="tutorial_info">Info about used libraries</string>
     <string name="tutorial_dashboard">Player Dashboard</string>
     <string name="tutorial_edit">Edit Player Points</string>
-    <string name="tutorial_settings">Change Game Extension</string>
+    <string name="tutorial_settings">Config Game Extension</string>
     <!--End tutorial -->
     <!-- Extension -->
     <string name="settings_extension_question">Choose extension on:</string>
     <string name="settings_extension_off">No extension</string>
     <string name="settings_extension_leaders">Leaders</string>
     <string name="settings_extension_cities">Cities</string>
+    <string name="settings_game_extensions"></string>
     <!-- End Extension -->
 </resources>
