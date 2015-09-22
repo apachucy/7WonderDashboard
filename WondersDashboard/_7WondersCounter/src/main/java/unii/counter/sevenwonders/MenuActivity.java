@@ -22,6 +22,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import tourguide.tourguide.Overlay;
 import tourguide.tourguide.Pointer;
+import tourguide.tourguide.Sequence;
 import tourguide.tourguide.ToolTip;
 import tourguide.tourguide.TourGuide;
 import unii.counter.sevenwonders.config.Config;
@@ -132,12 +133,22 @@ public class MenuActivity extends ActionBarActivity implements IMenuFragment {
         settingsButton.setImageDrawable(this.getResources().getDrawable(R.mipmap.ic_settings_applications));
         //1rst run
         if (SettingsPreferencesFactory.getInstance().getFirstRun()) {
-            ToolTip toolTip = new ToolTip()
+          /*  ToolTip toolTip = new ToolTip()
                     .setTitle(getString(R.string.tutorial_title))
                     .setDescription(getString(R.string.tutorial_info)).setBackgroundColor(this.getResources().getColor(R.color.accent))
-                    .setGravity(Gravity.LEFT | Gravity.BOTTOM);
+                    .setGravity(Gravity.LEFT | Gravity.BOTTOM);*/
 
-            mTutorialHandler = TourGuide.init(this).with(TourGuide.Technique.Click)
+
+                Sequence sequence = new Sequence.SequenceBuilder().add(getAboutTourGuide(aboutButton), getSettingsTourGuide(settingsButton))
+                        .setDefaultOverlay(new Overlay().setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                mTutorialHandler.next();
+                            }
+                        })).setContinueMethod(Sequence.ContinueMethod.OverlayListener).setDefaultPointer(new Pointer()).build();
+
+                mTutorialHandler = TourGuide.init(this).playInSequence(sequence);
+           /* mTutorialHandler = TourGuide.init(this).with(TourGuide.Technique.Click)
                     .motionType(TourGuide.MotionType.AllowAll)
                     .setPointer(new Pointer())
                     .setToolTip(toolTip)
@@ -148,7 +159,7 @@ public class MenuActivity extends ActionBarActivity implements IMenuFragment {
 
                         }
                     }))
-                    .playOn(aboutButton);
+                    .playOn(aboutButton);*/
         }//TODO: TOOLTIP FOR SETTINGS
         aboutButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -162,6 +173,27 @@ public class MenuActivity extends ActionBarActivity implements IMenuFragment {
                 replaceFragments(new SettingsFragment(), TAG_FRAGMENT_SETTINGS);
             }
         });
+    }
+
+    private TourGuide getSettingsTourGuide(ImageView settingsImageView) {
+        ToolTip toolTipDashboard = new ToolTip()
+                .setTitle(getString(R.string.tutorial_title))
+                .setDescription(getString(R.string.tutorial_settings)).setBackgroundColor(this.getResources().getColor(R.color.accent))
+                .setGravity(Gravity.LEFT | Gravity.BOTTOM);
+
+        return TourGuide.init(this)
+                .setToolTip(toolTipDashboard).playLater(settingsImageView);
+    }
+
+    private TourGuide getAboutTourGuide(ImageView aboutImageView) {
+
+        ToolTip toolTipEdit = new ToolTip()
+                .setTitle(getString(R.string.tutorial_title))
+                .setDescription(getString(R.string.tutorial_info)).setBackgroundColor(this.getResources().getColor(R.color.accent))
+                .setGravity(Gravity.LEFT | Gravity.BOTTOM);
+
+        return TourGuide.init(this)
+                .setToolTip(toolTipEdit).playLater(aboutImageView);
     }
 
     private void replaceFragments(Fragment fragment, String tag) {
