@@ -64,6 +64,6 @@
     <string name="settings_extension_off">No extension</string>
     <string name="settings_extension_leaders">Leaders</string>
     <string name="settings_extension_cities">Cities</string>
-    <string name="settings_game_extensions"></string>
+    <string name="settings_game_extensions">Use game extensions</string>
     <!-- End Extension -->
 </resources>

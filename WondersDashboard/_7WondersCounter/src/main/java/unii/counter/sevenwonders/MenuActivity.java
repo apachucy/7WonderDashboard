@@ -150,7 +150,13 @@ public class MenuActivity extends ActionBarActivity implements IMenuFragment {
         settingsButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                replaceFragments(new SettingsFragment(), TAG_FRAGMENT_SETTINGS);
+                //TODO: IN THIS PLACE CHANGE
+                Fragment fragmentFound = getSupportFragmentManager().findFragmentByTag(TAG_FRAGMENT_MENU);
+                if (fragmentFound != null) {
+                    replaceFragments(new SettingsFragment(), TAG_FRAGMENT_SETTINGS);
+                } else {
+                    replaceFragments(new MenuFragment(), TAG_FRAGMENT_MENU);
+                }
             }
         });
     }
