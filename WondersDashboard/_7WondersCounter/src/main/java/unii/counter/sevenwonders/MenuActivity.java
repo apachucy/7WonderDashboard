@@ -33,7 +33,7 @@ import unii.counter.sevenwonders.view.fragment.IMenuFragment;
 import unii.counter.sevenwonders.view.fragment.MenuFragment;
 import unii.counter.sevenwonders.view.fragment.SettingsFragment;
 
-public class MenuActivity extends ActionBarActivity implements IMenuFragment {
+public class MenuActivity extends BaseActivity implements IMenuFragment {
 
     private static final String TAG_DIALOG_INFO = "INFO_DIALOG_TAG";
     private List<String> mPlayerList;
@@ -60,7 +60,7 @@ public class MenuActivity extends ActionBarActivity implements IMenuFragment {
         mToolBar.setLogoDescription(R.string.app_name);
         mToolBar.setTitleTextColor(getResources().getColor(R.color.white));
         mToolBar.setTitle(R.string.app_name);
-        replaceFragments(new MenuFragment(), TAG_FRAGMENT_MENU);
+        replaceFragments(new MenuFragment(), TAG_FRAGMENT_MENU, R.id.fragment_content_frame);
 
 
     }
@@ -153,9 +153,9 @@ public class MenuActivity extends ActionBarActivity implements IMenuFragment {
                 //TODO: IN THIS PLACE CHANGE
                 Fragment fragmentFound = getSupportFragmentManager().findFragmentByTag(TAG_FRAGMENT_MENU);
                 if (fragmentFound != null) {
-                    replaceFragments(new SettingsFragment(), TAG_FRAGMENT_SETTINGS);
+                    replaceFragments(new SettingsFragment(), TAG_FRAGMENT_SETTINGS, R.id.fragment_content_frame);
                 } else {
-                    replaceFragments(new MenuFragment(), TAG_FRAGMENT_MENU);
+                    replaceFragments(new MenuFragment(), TAG_FRAGMENT_MENU, R.id.fragment_content_frame);
                 }
             }
         });
@@ -182,15 +182,6 @@ public class MenuActivity extends ActionBarActivity implements IMenuFragment {
                 .setToolTip(toolTipEdit).playLater(aboutImageView);
     }
 
-    private void replaceFragments(Fragment fragment, String tag) {
-        Fragment fragmentFound = getSupportFragmentManager().findFragmentByTag(tag);
-        if (fragmentFound != null) {
-            getSupportFragmentManager().beginTransaction().show(fragmentFound);
-
-        } else {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_content_frame, fragment, tag).commit();
-        }
-    }
 
     @Override
     public void onBackPressed() {
@@ -199,7 +190,7 @@ public class MenuActivity extends ActionBarActivity implements IMenuFragment {
             super.onBackPressed();
         } else {
             //if current fragment is a fragment with inputting points - when pressing hardware back button let's go back to grid view
-            replaceFragments(new MenuFragment(), TAG_FRAGMENT_MENU);
+            replaceFragments(new MenuFragment(), TAG_FRAGMENT_MENU, R.id.fragment_content_frame);
         }
 
     }

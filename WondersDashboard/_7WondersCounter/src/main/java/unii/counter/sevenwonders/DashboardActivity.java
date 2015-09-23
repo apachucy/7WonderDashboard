@@ -34,7 +34,7 @@ import unii.counter.sevenwonders.view.fragment.GridCategoryFragment;
 import unii.counter.sevenwonders.view.fragment.DashboardFragment;
 import unii.counter.sevenwonders.view.fragment.InputPointsFragment;
 
-public class DashboardActivity extends ActionBarActivity implements IPlayerScore, OnGridItemSelected {
+public class DashboardActivity extends BaseActivity implements IPlayerScore, OnGridItemSelected {
 
     @Bind(R.id.toolbar)
     Toolbar mToolBar;
@@ -80,17 +80,7 @@ public class DashboardActivity extends ActionBarActivity implements IPlayerScore
         mToolBar.setLogoDescription(R.string.app_name);
         mToolBar.setTitleTextColor(getResources().getColor(R.color.white));
         mToolBar.setTitle(R.string.app_name);
-        replaceFragments(new DashboardFragment(), TAG_FRAGMENT_SCORE_SHEET_TABLE);
-    }
-
-    private void replaceFragments(Fragment fragment, String tag) {
-        Fragment fragmentFound = getSupportFragmentManager().findFragmentByTag(tag);
-        if (fragmentFound != null) {
-            getSupportFragmentManager().beginTransaction().show(fragmentFound);
-
-        } else {
-            getSupportFragmentManager().beginTransaction().replace(R.id.table_content_frame, fragment, tag).commit();
-        }
+        replaceFragments(new DashboardFragment(), TAG_FRAGMENT_SCORE_SHEET_TABLE, R.id.table_content_frame);
     }
 
 
@@ -108,9 +98,9 @@ public class DashboardActivity extends ActionBarActivity implements IPlayerScore
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_dashboard) {
-            replaceFragments(new DashboardFragment(), TAG_FRAGMENT_SCORE_SHEET_TABLE);
+            replaceFragments(new DashboardFragment(), TAG_FRAGMENT_SCORE_SHEET_TABLE, R.id.table_content_frame);
         } else if (id == R.id.action_edit) {
-            replaceFragments(new GridCategoryFragment(), TAG_FRAGMENT_CATEGORY_GRID);
+            replaceFragments(new GridCategoryFragment(), TAG_FRAGMENT_CATEGORY_GRID, R.id.table_content_frame);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -141,7 +131,7 @@ public class DashboardActivity extends ActionBarActivity implements IPlayerScore
             startActivity(setIntent);
         } else {
             //if current fragment is a fragment with inputting points - when pressing hardware back button let's go back to grid view
-            replaceFragments(new GridCategoryFragment(), TAG_FRAGMENT_CATEGORY_GRID);
+            replaceFragments(new GridCategoryFragment(), TAG_FRAGMENT_CATEGORY_GRID, R.id.table_content_frame);
         }
 
 
@@ -172,14 +162,14 @@ public class DashboardActivity extends ActionBarActivity implements IPlayerScore
         dashboardButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                replaceFragments(new DashboardFragment(), TAG_FRAGMENT_SCORE_SHEET_TABLE);
+                replaceFragments(new DashboardFragment(), TAG_FRAGMENT_SCORE_SHEET_TABLE, R.id.table_content_frame);
             }
         });
 
         editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                replaceFragments(new GridCategoryFragment(), TAG_FRAGMENT_CATEGORY_GRID);
+                replaceFragments(new GridCategoryFragment(), TAG_FRAGMENT_CATEGORY_GRID, R.id.table_content_frame);
             }
         });
     }
@@ -211,6 +201,6 @@ public class DashboardActivity extends ActionBarActivity implements IPlayerScore
         Bundle bundle = new Bundle();
         bundle.putSerializable(Config.BUNDLE_CATEGORY_SELECTED, categorySelected);
         fragment.setArguments(bundle);
-        replaceFragments(fragment, TAG_FRAGMENT_PLAYER_INPUT_POINTS);
+        replaceFragments(fragment, TAG_FRAGMENT_PLAYER_INPUT_POINTS, R.id.table_content_frame);
     }
 }
