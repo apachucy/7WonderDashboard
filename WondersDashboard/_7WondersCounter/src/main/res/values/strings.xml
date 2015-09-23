@@ -59,6 +59,8 @@
     <string name="tutorial_dashboard">Player Dashboard</string>
     <string name="tutorial_edit">Edit Player Points</string>
     <string name="tutorial_settings">Config Game Extension</string>
+    <string name="tutorial_reset">Restart Game</string>
+    <string name="tutorial_remove">Swipe to remove a player</string>
     <!--End tutorial -->
     <!-- Extension -->
     <string name="settings_extension_question">Choose extension on:</string>

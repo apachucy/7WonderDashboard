@@ -3,7 +3,13 @@ package unii.counter.sevenwonders;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
+import android.view.Gravity;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import tourguide.tourguide.ToolTip;
+import tourguide.tourguide.TourGuide;
 
 /**
  * Created by apachucy on 2015-09-23.
@@ -24,5 +30,25 @@ public class BaseActivity extends ActionBarActivity {
             hideKeyboard();
             getSupportFragmentManager().beginTransaction().replace(container, fragment, tag).commit();
         }
+    }
+
+    protected TourGuide bindTourGuideButton(String bodyText, ImageView imageView) {
+        ToolTip toolTip = new ToolTip()
+                .setTitle(getString(R.string.tutorial_title))
+                .setDescription(bodyText).setBackgroundColor(getResources().getColor(R.color.accent))
+                .setGravity(Gravity.LEFT | Gravity.BOTTOM);
+
+        return TourGuide.init(this)
+                .setToolTip(toolTip).playLater(imageView);
+    }
+
+    protected TourGuide bindTourGuideButton(String bodyText, TextView textView) {
+        ToolTip toolTip = new ToolTip()
+                .setTitle(getString(R.string.tutorial_title))
+                .setDescription(bodyText).setBackgroundColor(getResources().getColor(R.color.accent))
+                .setGravity(Gravity.RIGHT | Gravity.BOTTOM);
+
+        return TourGuide.init(this)
+                .setToolTip(toolTip).playLater(textView);
     }
 }

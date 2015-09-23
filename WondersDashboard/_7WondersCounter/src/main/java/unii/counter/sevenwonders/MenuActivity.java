@@ -6,14 +6,13 @@ import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,17 +22,17 @@ import butterknife.ButterKnife;
 import tourguide.tourguide.Overlay;
 import tourguide.tourguide.Pointer;
 import tourguide.tourguide.Sequence;
-import tourguide.tourguide.ToolTip;
 import tourguide.tourguide.TourGuide;
 import unii.counter.sevenwonders.config.Config;
 import unii.counter.sevenwonders.helper.MenuHelper;
 import unii.counter.sevenwonders.sharedprefrences.SettingsPreferencesFactory;
 import unii.counter.sevenwonders.view.dialog.InfoDialog;
-import unii.counter.sevenwonders.view.fragment.IMenuFragment;
+import unii.counter.sevenwonders.view.fragment.IMenuActivityBinder;
+import unii.counter.sevenwonders.view.fragment.IMenuFragmentBinder;
 import unii.counter.sevenwonders.view.fragment.MenuFragment;
 import unii.counter.sevenwonders.view.fragment.SettingsFragment;
 
-public class MenuActivity extends BaseActivity implements IMenuFragment {
+public class MenuActivity extends BaseActivity implements IMenuFragmentBinder {
 
     private static final String TAG_DIALOG_INFO = "INFO_DIALOG_TAG";
     private List<String> mPlayerList;
@@ -70,7 +69,12 @@ public class MenuActivity extends BaseActivity implements IMenuFragment {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
-        setMenuActions((ImageView) menu.getItem(0).getActionView(), (ImageView) menu.getItem(1).getActionView());
+        Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.fragment_content_frame);
+        if (currentFragment instanceof IMenuActivityBinder) {
+            setMenuActions((ImageView) menu.getItem(0).getActionView(), (ImageView) menu.getItem(1).getActionView(), ((IMenuActivityBinder) currentFragment).getListTitle());
+        } else {
+            setMenuActions((ImageView) menu.getItem(0).getActionView(), (ImageView) menu.getItem(1).getActionView(), null);
+        }
         return true;
     }
 
@@ -121,24 +125,38 @@ public class MenuActivity extends BaseActivity implements IMenuFragment {
         newFragment.show(ft, TAG_DIALOG_INFO);
     }
 
-    private void setMenuActions(ImageView aboutButton, ImageView settingsButton) {
+    private void setMenuActions(ImageView aboutButton, ImageView settingsButton, TextView titleList) {
         // just adding some padding to look better
         int padding = MenuHelper.getHelperMenuPadding(getResources().getDisplayMetrics().density);
 
         aboutButton.setPadding(padding, padding, padding, padding);
         settingsButton.setPadding(padding, padding, padding, padding);
+
         // set an image
         aboutButton.setImageDrawable(this.getResources().getDrawable(R.mipmap.ic_info));
         settingsButton.setImageDrawable(this.getResources().getDrawable(R.mipmap.ic_settings_applications));
         //1rst run
         if (SettingsPreferencesFactory.getInstance().getFirstRun()) {
-            Sequence sequence = new Sequence.SequenceBuilder().add(getAboutTourGuide(aboutButton), getSettingsTourGuide(settingsButton))
-                    .setDefaultOverlay(new Overlay().setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            mTutorialHandler.next();
-                        }
-                    })).setContinueMethod(Sequence.ContinueMethod.OverlayListener).setDefaultPointer(new Pointer()).build();
+            Sequence sequence = null;
+            if (titleList != null) {
+                sequence = new Sequence.SequenceBuilder().add(bindTourGuideButton(getString(R.string.tutorial_title), aboutButton), bindTourGuideButton(getString(R.string.tutorial_settings), settingsButton), bindTourGuideButton(getString(R.string.tutorial_remove), titleList))
+                        .setDefaultOverlay(new Overlay().setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                mTutorialHandler.next();
+                            }
+                        })).setContinueMethod(Sequence.ContinueMethod.OverlayListener).setDefaultPointer(new Pointer()).build();
+
+            } else {
+                sequence = new Sequence.SequenceBuilder().add(bindTourGuideButton(getString(R.string.tutorial_title), aboutButton), bindTourGuideButton(getString(R.string.tutorial_settings), settingsButton))
+                        .setDefaultOverlay(new Overlay().setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                mTutorialHandler.next();
+                            }
+                        })).setContinueMethod(Sequence.ContinueMethod.OverlayListener).setDefaultPointer(new Pointer()).build();
+            }
+
             mTutorialHandler = TourGuide.init(this).playInSequence(sequence);
         }
         aboutButton.setOnClickListener(new View.OnClickListener() {
@@ -150,7 +168,6 @@ public class MenuActivity extends BaseActivity implements IMenuFragment {
         settingsButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO: IN THIS PLACE CHANGE
                 Fragment fragmentFound = getSupportFragmentManager().findFragmentByTag(TAG_FRAGMENT_MENU);
                 if (fragmentFound != null) {
                     replaceFragments(new SettingsFragment(), TAG_FRAGMENT_SETTINGS, R.id.fragment_content_frame);
@@ -160,28 +177,6 @@ public class MenuActivity extends BaseActivity implements IMenuFragment {
             }
         });
     }
-
-    private TourGuide getSettingsTourGuide(ImageView settingsImageView) {
-        ToolTip toolTipDashboard = new ToolTip()
-                .setTitle(getString(R.string.tutorial_title))
-                .setDescription(getString(R.string.tutorial_settings)).setBackgroundColor(this.getResources().getColor(R.color.accent))
-                .setGravity(Gravity.LEFT | Gravity.BOTTOM);
-
-        return TourGuide.init(this)
-                .setToolTip(toolTipDashboard).playLater(settingsImageView);
-    }
-
-    private TourGuide getAboutTourGuide(ImageView aboutImageView) {
-
-        ToolTip toolTipEdit = new ToolTip()
-                .setTitle(getString(R.string.tutorial_title))
-                .setDescription(getString(R.string.tutorial_info)).setBackgroundColor(this.getResources().getColor(R.color.accent))
-                .setGravity(Gravity.LEFT | Gravity.BOTTOM);
-
-        return TourGuide.init(this)
-                .setToolTip(toolTipEdit).playLater(aboutImageView);
-    }
-
 
     @Override
     public void onBackPressed() {

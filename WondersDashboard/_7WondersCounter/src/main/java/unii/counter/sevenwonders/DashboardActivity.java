@@ -148,7 +148,7 @@ public class DashboardActivity extends BaseActivity implements IPlayerScore, OnG
         restartButton.setImageDrawable(this.getResources().getDrawable(R.mipmap.ic_restart));
 
         if (SettingsPreferencesFactory.getInstance().getFirstRun()) {
-            Sequence sequence = new Sequence.SequenceBuilder().add(getDashboardTourGuide(dashboardButton), getEditTourGuide(editButton))
+            Sequence sequence = new Sequence.SequenceBuilder().add(bindTourGuideButton(getString(R.string.tutorial_dashboard), dashboardButton), bindTourGuideButton(getString(R.string.tutorial_edit), editButton), bindTourGuideButton(getString(R.string.tutorial_reset), restartButton))
                     .setDefaultOverlay(new Overlay().setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
@@ -186,26 +186,6 @@ public class DashboardActivity extends BaseActivity implements IPlayerScore, OnG
         });
     }
 
-    private TourGuide getDashboardTourGuide(ImageView dashboardImageView) {
-        ToolTip toolTipDashboard = new ToolTip()
-                .setTitle(getString(R.string.tutorial_title))
-                .setDescription(getString(R.string.tutorial_dashboard)).setBackgroundColor(this.getResources().getColor(R.color.accent))
-                .setGravity(Gravity.LEFT | Gravity.BOTTOM);
-
-        return TourGuide.init(this)
-                .setToolTip(toolTipDashboard).playLater(dashboardImageView);
-    }
-
-    private TourGuide getEditTourGuide(ImageView editImageView) {
-
-        ToolTip toolTipEdit = new ToolTip()
-                .setTitle(getString(R.string.tutorial_title))
-                .setDescription(getString(R.string.tutorial_edit)).setBackgroundColor(this.getResources().getColor(R.color.accent))
-                .setGravity(Gravity.LEFT | Gravity.BOTTOM);
-
-        return TourGuide.init(this)
-                .setToolTip(toolTipEdit).playLater(editImageView);
-    }
 
     @Override
     public void onCategorySelected(Category categorySelected) {

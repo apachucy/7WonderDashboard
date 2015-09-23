@@ -25,10 +25,10 @@ import unii.counter.sevenwonders.view.adapter.PlayerListAdapter;
 /**
  * Created by apachucy on 2015-09-22.
  */
-public class MenuFragment extends Fragment {
+public class MenuFragment extends Fragment implements IMenuActivityBinder {
 
     private Context mContext;
-    private IMenuFragment mMenuFragment;
+    private IMenuFragmentBinder mMenuFragment;
     private PlayerListAdapter mPlayerListAdapter;
 
     @Bind(R.id.settings_playerListView)
@@ -41,6 +41,9 @@ public class MenuFragment extends Fragment {
     EditText mPlayerNameEditText;
     @Bind(R.id.settings_warningTextView)
     TextView mWarningTextView;
+
+    @Bind(R.id.settings_playerListTextView)
+    TextView mTitlePlayerList;
 
     @OnClick(R.id.settings_addPlayerButton)
     void onAddPlayerClick(View v) {
@@ -76,7 +79,7 @@ public class MenuFragment extends Fragment {
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         mContext = activity;
-        mMenuFragment = (IMenuFragment) activity;
+        mMenuFragment = (IMenuFragmentBinder) activity;
     }
 
     @Override
@@ -137,4 +140,9 @@ public class MenuFragment extends Fragment {
             mPlayerListAdapter.notifyDataSetChanged();
         }
     };
+
+    @Override
+    public TextView getListTitle() {
+        return mTitlePlayerList;
+    }
 }
