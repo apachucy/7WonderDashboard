@@ -19,4 +19,11 @@
         app:actionViewClass="android.widget.ImageView"
         app:showAsAction="always" />
 
+    <item
+        android:id="@+id/action_restart"
+        android:icon="@mipmap/ic_restart"
+        android:orderInCategory="200"
+        android:title="@string/menu_restart"
+        app:actionViewClass="android.widget.ImageView"
+        app:showAsAction="always" />
 </menu>

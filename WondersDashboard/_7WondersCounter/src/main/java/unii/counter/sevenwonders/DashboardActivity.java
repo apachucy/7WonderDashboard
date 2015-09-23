@@ -32,6 +32,7 @@ import unii.counter.sevenwonders.view.IPlayerScore;
 import unii.counter.sevenwonders.view.adapter.OnGridItemSelected;
 import unii.counter.sevenwonders.view.fragment.GridCategoryFragment;
 import unii.counter.sevenwonders.view.fragment.DashboardFragment;
+import unii.counter.sevenwonders.view.fragment.IResetData;
 import unii.counter.sevenwonders.view.fragment.InputPointsFragment;
 
 public class DashboardActivity extends BaseActivity implements IPlayerScore, OnGridItemSelected {
@@ -63,9 +64,7 @@ public class DashboardActivity extends BaseActivity implements IPlayerScore, OnG
             mPlayerNameList = b
                     .getStringArrayList(Config.BUNDLE_PLAYER_LIST);
             mPlayerScoreSheetMap = new HashMap<>();
-            for (String name : mPlayerNameList) {
-                mPlayerScoreSheetMap.put(name, new PlayerScoreSheet(name));
-            }
+            createScoreSheet();
 
         } else {
             // no players were passed
@@ -88,7 +87,7 @@ public class DashboardActivity extends BaseActivity implements IPlayerScore, OnG
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.dashboard, menu);
-        setMenuActions((ImageView) menu.getItem(0).getActionView(), (ImageView) menu.getItem(1).getActionView());
+        setMenuActions((ImageView) menu.getItem(0).getActionView(), (ImageView) menu.getItem(1).getActionView(), (ImageView) menu.getItem(2).getActionView());
         return true;
     }
 
@@ -137,15 +136,16 @@ public class DashboardActivity extends BaseActivity implements IPlayerScore, OnG
 
     }
 
-    private void setMenuActions(ImageView dashboardButton, ImageView editButton) {
+    private void setMenuActions(ImageView dashboardButton, ImageView editButton, ImageView restartButton) {
         // just adding some padding to look better
         int padding = MenuHelper.getHelperMenuPadding(getResources().getDisplayMetrics().density);
         dashboardButton.setPadding(padding, padding, padding, padding);
         editButton.setPadding(padding, padding, padding, padding);
-
+        restartButton.setPadding(padding, padding, padding, padding);
         // set an image
         dashboardButton.setImageDrawable(this.getResources().getDrawable(R.mipmap.ic_dashboard));
         editButton.setImageDrawable(this.getResources().getDrawable(R.mipmap.ic_mode_edit));
+        restartButton.setImageDrawable(this.getResources().getDrawable(R.mipmap.ic_restart));
 
         if (SettingsPreferencesFactory.getInstance().getFirstRun()) {
             Sequence sequence = new Sequence.SequenceBuilder().add(getDashboardTourGuide(dashboardButton), getEditTourGuide(editButton))
@@ -170,6 +170,18 @@ public class DashboardActivity extends BaseActivity implements IPlayerScore, OnG
             @Override
             public void onClick(View view) {
                 replaceFragments(new GridCategoryFragment(), TAG_FRAGMENT_CATEGORY_GRID, R.id.table_content_frame);
+            }
+        });
+        restartButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mPlayerScoreSheetMap.clear();
+                createScoreSheet();
+
+                Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.table_content_frame);
+                if (currentFragment instanceof IResetData) {
+                    ((IResetData) currentFragment).resetData();
+                }
             }
         });
     }
@@ -202,5 +214,11 @@ public class DashboardActivity extends BaseActivity implements IPlayerScore, OnG
         bundle.putSerializable(Config.BUNDLE_CATEGORY_SELECTED, categorySelected);
         fragment.setArguments(bundle);
         replaceFragments(fragment, TAG_FRAGMENT_PLAYER_INPUT_POINTS, R.id.table_content_frame);
+    }
+
+    private void createScoreSheet() {
+        for (String name : mPlayerNameList) {
+            mPlayerScoreSheetMap.put(name, new PlayerScoreSheet(name));
+        }
     }
 }

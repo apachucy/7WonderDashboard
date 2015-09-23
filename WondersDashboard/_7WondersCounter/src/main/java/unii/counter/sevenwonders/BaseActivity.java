@@ -19,8 +19,7 @@ public class BaseActivity extends ActionBarActivity {
     protected void replaceFragments(Fragment fragment, String tag, int container) {
         Fragment fragmentFound = getSupportFragmentManager().findFragmentByTag(tag);
         if (fragmentFound != null) {
-            getSupportFragmentManager().beginTransaction().show(fragmentFound);
-
+            getSupportFragmentManager().beginTransaction().show(fragmentFound).commit();
         } else {
             hideKeyboard();
             getSupportFragmentManager().beginTransaction().replace(container, fragment, tag).commit();

@@ -24,7 +24,7 @@ import unii.counter.sevenwonders.view.adapter.SciencePointsRecyclerAdapter;
 /**
  * Created by apachucy on 2015-09-18.
  */
-public class InputPointsFragment extends Fragment {
+public class InputPointsFragment extends Fragment implements IResetData{
     private Context mContext;
     private IPlayerScore mPlayerScore;
     private Category mSelectedCategory;
@@ -74,4 +74,8 @@ public class InputPointsFragment extends Fragment {
     }
 
 
+    @Override
+    public void resetData() {
+        mPointsRecyclerAdapter.notifyDataSetChanged();
+    }
 }

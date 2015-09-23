@@ -52,6 +52,7 @@
     <string name="menu_edit">Edit Player Score</string>
     <string name="menu_info">Info</string>
     <string name="menu_settings">Settings</string>
+    <string name="menu_restart">Restart</string>
     <!-- Tutorial -->
     <string name="tutorial_title">Tutorial</string>
     <string name="tutorial_info">Info about used libraries</string>

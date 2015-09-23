@@ -27,7 +27,7 @@ import unii.counter.sevenwonders.view.adapter.TablePointsRecyclerAdapter;
 /**
  * Created by Arkadiusz Pachucy on 2015-09-04.
  */
-public class DashboardFragment extends Fragment {
+public class DashboardFragment extends Fragment implements IResetData {
     private Context mContext;
     private IPlayerScore mPlayerScore;
 
@@ -53,14 +53,12 @@ public class DashboardFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_score_sheet_table, container, false);
         ButterKnife.bind(this, view);
 
-
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(mContext);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.addItemDecoration(new DividerItemDecorator(mContext, DividerItemDecorator.VERTICAL_LIST));
         mAdapter = new TablePointsRecyclerAdapter(mPlayerScore.getPlayersScoreSheet(), mPlayerScore.getPlayerNames());
         mRecyclerView.setAdapter(mAdapter);
-
 
         return view;
     }
@@ -73,6 +71,9 @@ public class DashboardFragment extends Fragment {
         if (!playerScoreSheetList.isEmpty()) {
             mWinnerPointsTextView.setText(playerScoreSheetList.get(0).getGamePoints() + "");
             mWinnerNameTextView.setText(playerNameToString(playerScoreSheetList));
+        }else{
+            mWinnerNameTextView.setText("");
+            mWinnerPointsTextView.setText("");
         }
     }
 
@@ -104,14 +105,12 @@ public class DashboardFragment extends Fragment {
                     maxPoint = player.getGamePoints();
                 }
                 playerScoreSheetList.add((PlayerScoreSheet) playerData.get(playerName));
-
             }
         }
         //if all data are not yet provided
         if (maxPoint == 0) {
             playerScoreSheetList.clear();
         }
-
         return playerScoreSheetList;
     }
 
@@ -121,5 +120,13 @@ public class DashboardFragment extends Fragment {
             playerNames += player.getPlayerName() + " ";
         }
         return playerNames;
+    }
+
+    @Override
+    public void resetData() {
+        mAdapter.notifyDataSetChanged();
+        mWinnerNameTextView.setText("");
+        mWinnerPointsTextView.setText("");
+
     }
 }
