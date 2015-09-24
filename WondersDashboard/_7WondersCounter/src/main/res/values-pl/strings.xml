@@ -48,4 +48,7 @@
     <string name="settings_extension_off">Bez dodatków</string>
     <string name="settings_extension_question">Wybierz dodatki:</string>
     <string name="tutorial_settings">Konfiguracja dodatków do gry</string>
+    <string name="menu_restart">Restart</string>
+    <string name="tutorial_remove">Żeby usunąć gracza przesuń jego imię w lewo</string>
+    <string name="tutorial_reset">Zresetuj grę</string>
 </resources>
